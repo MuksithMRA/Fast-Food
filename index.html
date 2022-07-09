@@ -14,7 +14,7 @@
 </head>
 <body>
     <!--Nav bar -- Start -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"><img src="./Images/logo.png" alt="" height="70px" width="70px"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,8 +34,8 @@
               <li class="nav-item mx-auto">
                 <a class="nav-link" href="#">About Us</a>
               </li>
-            
             </ul>
+            <i class="fa-solid fa-cart-shopping-fast"></i>
             <form class="d-flex">
               <button class="btn btn-primary     mx-auto" type="submit"><i class="fa-solid fa-user"></i>&nbsp Account</button>
             </form>
@@ -46,8 +46,32 @@
       <!---Navbar -- End-->
       <!---Landing Page --- Start-->
 
-      <section class="container-fluid landing-page" style="height: 100vh;">
+      <section class="container-fluid h-100 w-100 landing-page" style="padding-top: 90px;">
         
+        <div class="row  w-100 mx-auto">
+            <div class="col col-lg-6 col-md-6 col-sm-12 align-middle">
+                <div class="container">
+                    <div class="h1 text-light">
+                        Find Your <br>
+                        Favorite & Delicious <br>
+                        Foods
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="categoryDropDown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-bowl-food"></i> &nbsp Select Category
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="categoryDropDown">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </div>
+                </div>
+            </div>
+            <div class="col col col-lg-6 col-md-6 hidden-sm">
+                <img src="./Images/landingpage_image.png" alt="" class="img-thumbnail bg-transparent">
+            </div>
+        </div>
       </section>
       <!---Landing Page --- End-->
       <!--Product Item List Start-->
