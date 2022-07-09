@@ -1,3 +1,14 @@
 .landing-page,nav{
    background-color: #FF9F1A; 
 }
+
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: red;
+    height: 70vh;
+    width: 100%;
+}
