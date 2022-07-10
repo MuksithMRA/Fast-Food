@@ -1,0 +1,8 @@
+@media only screen and (max-width: 768px) {
+    .landing-page h1{
+        font-size: 2rem;
+    }
+    /* .newCol img{
+       display: none;
+    } */
+  }
