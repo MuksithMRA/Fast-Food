@@ -1,9 +1,9 @@
 // Element definning
 const product_list = document.querySelector("#product_list");
-const product = document.querySelector('#product');
+const product = document.querySelector("#product");
 
 // Navbar navigation
-$(".navbar .nav-link").on("click", function() {
+$(".navbar .nav-link").on("click", function () {
   $(".navbar").find(".active").removeClass("active");
   $(this).addClass("active");
 });
