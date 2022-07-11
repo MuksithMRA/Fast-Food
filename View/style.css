@@ -1,10 +1,10 @@
-.landing-page,nav{
+.landing-page,.navTop{
    background-color: #FF9F1A; 
 
 }
 
 .landing-page{
-    height: 70vh;
+    height: 93.7vh;
     color: white;
 }
 

@@ -2,7 +2,13 @@
     .landing-page h1{
         font-size: 2rem;
     }
-    /* .newCol img{
-       display: none;
-    } */
+    .newCol img{
+       width: 60%;
+       height: auto;
+    }
+
+    .newCol{
+        text-align: center;
+        align-items: center;
+    }
   }
