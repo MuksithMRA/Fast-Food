@@ -1,11 +1,14 @@
+//Element definning
 const product_list = document.querySelector("#product_list");
 const product = document.querySelector('#product');
 
+//Navbar navigation
 $(".navbar .nav-link").on("click", function(){
     $(".navbar").find(".active").removeClass("active");
     $(this).addClass("active");
  });
 
+//product list looping
 product_list.innerHTML = null;
  for (let index = 0; index < 5; index++) {
     const col = document.createElement("div");
