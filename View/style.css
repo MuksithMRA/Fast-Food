@@ -18,4 +18,11 @@
     font-size: 3rem;
 }
 
+ a:link {
+     text-decoration: none;
+ }
+
+ a:hover {
+     text-decoration: underline;
+ }
 
