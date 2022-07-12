@@ -19,7 +19,7 @@ product_list.innerHTML = null;
     col.classList.add("col-lg-3");
     col.classList.add("col-md-6");
     col.classList.add("col-sm-12");
-    col.classList.add("p-5");
+    col.classList.add("p-4");
     col.classList.add("product-card");
     col.innerHTML = product.innerHTML;
     product_list.appendChild(col);
