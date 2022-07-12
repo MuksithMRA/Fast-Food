@@ -1,10 +1,10 @@
 // Element definning
 const product_list = document.querySelector("#product_list");
-const product = document.querySelector('#product');
-const pagination = document.querySelector('.pagination');
+const product = document.querySelector("#product");
+const pagination = document.querySelector(".pagination");
 
 // Navbar navigation
-$(".navbar .nav-link").on("click", function() {
+$(".navbar .nav-link").on("click", function () {
   $(".navbar").find(".active").removeClass("active");
   $(this).addClass("active");
 });
@@ -22,4 +22,4 @@ for (let index = 0; index < 5; index++) {
   col.innerHTML = product.innerHTML;
   product_list.appendChild(col);
 }
-console.log()
+console.log();
