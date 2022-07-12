@@ -16,10 +16,10 @@ product_list.innerHTML = null;
  for (let index = 0; index < 5; index++) {
     const col = document.createElement("div");
     col.classList.add("col-12");
-    col.classList.add("col-lg-3");
-    col.classList.add("col-md-6");
-    col.classList.add("col-sm-12");
-    col.classList.add("p-4");
+    col.classList.add("col-lg-2");
+    col.classList.add("col-md-4");
+    col.classList.add("col-sm-6");
+    col.classList.add("p-3");
     col.classList.add("product-card");
     col.innerHTML = product.innerHTML;
     product_list.appendChild(col);
