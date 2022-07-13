@@ -1,9 +1,10 @@
-let currentAuthScreen = "Login";
+let currentAuthScreen = "Sign in";
 //Navbar navigation
 $(".navbar .nav-link").on("click", function () {
   $(".navbar").find(".active").removeClass("active");
   $(this).addClass("active");
 });
+
 
 //Account modal Navigation
 $(document).ready(function () {
@@ -11,13 +12,17 @@ $(document).ready(function () {
     $(".nav").find(".active").removeClass("active");
     $(this).addClass("active");
     currentAuthScreen = $(this).text();
-    $(".modal-footer .save").text(currentAuthScreen + " now");
+    changeText();
   });
 });
 
-$(document).ready(function () {
-  $(".modal-footer .save").text(currentAuthScreen + " now");
-});
+changeText();
+
+function changeText() {
+  $(document).ready(function () {
+    $(".modal-footer .save").text(currentAuthScreen + " now");
+  });
+}
 
 //Adding preloader
 var loader = document.querySelector("#loader");
@@ -42,3 +47,17 @@ document.addEventListener("DOMContentLoaded", function () {
   loader = document.getElementById("loader");
   loadNow(1);
 });
+
+
+//Read profile pic & assign to image container
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#avatar').attr('src', e.target.result).width(150).height(150);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}

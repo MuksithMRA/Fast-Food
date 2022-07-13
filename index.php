@@ -15,8 +15,14 @@
 </head>
 
 <body>
+
+  <!---Preloader start--->
   <div id="loader"></div>
+  <!---Preloader end--->
+
+
   <div class="content">
+
     <!--Nav bar -- Start -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navTop">
       <div class="container-fluid">
@@ -30,7 +36,7 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item mx-auto">
-              <a class="nav-link" href="#">Browse Foods</a>
+              <a class="nav-link" href="#product_list">Browse Foods</a>
             </li>
             <li class="nav-item mx-auto">
               <a class="nav-link" href="./View/checkout_layout.html">Checkout</a>
@@ -39,34 +45,43 @@
               <a class="nav-link" href="#">About Us</a>
             </li>
           </ul>
+
+          <!-- cart Button trigger modal start -->
           <form class="d-flex">
             <a href="./View/cart.html" class="btn btn-primary mx-auto position-relative">
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 99+
-                <span class="visually-hidden">cart items</span> </span><i class="fa-solid fa-cart-shopping"></i>
+                <span class="visually-hidden">
+                  cart items
+                </span> 
+              </span>
+              <i class="fa-solid fa-cart-shopping"></i>
             </a>
           </form>
-          <div data-bs-toggle="collapse" style="width: 20px"></div>
-          <form class="d-flex">
+          <!-- cart Button trigger modal end -->
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary mx-auto open-auth" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div data-bs-toggle="collapse" style="width: 20px"></div>
+          
+          <!-- Account Button trigger modal start-->
+          <form class="d-flex">
+            <button type="button" class="btn btn-primary mx-auto open-auth" data-bs-toggle="modal" data-bs-target="#authentication">
               <i class="fa-solid fa-user"></i>&nbsp; Account
             </button>
-
-
-
           </form>
+          <!-- Account Button trigger modal end-->
         </div>
       </div>
     </nav>
-
     <!---Navbar -- End-->
-    <!---Landing Page --- Start-->
 
+
+    <!---Landing Page --- Start-->
     <div class="container-fluid">
       <br><br>
       <div class="row landing-page pt-20">
+
+
+      <!--Left Column start --->
         <div class="col-12 col-lg-5 col-md-5 col-sm-12 d-flex flex-column justify-content-center px-5 newCol">
           <div class="mt-4 p-5 text-white rounded">
             <h1>Fast Food</h1>
@@ -87,6 +102,9 @@
           </div>
           <br />
         </div>
+        <!--Left Column end --->
+
+        <!--Right Column start --->
         <div class="col-12 col-lg-7 col-md-7 col-sm-12  d-flex flex-column justify-content-center newCol">
           <div id="carouselExampleControls" class="carousel slide w-70 " data-bs-ride="carousel">
             <div class="carousel-inner w-70">
@@ -111,12 +129,17 @@
             </button>
           </div>
         </div>
+        <!--Right Column end --->
+
+
       </div>
     </div>
-
     <!---Landing Page --- End-->
+    
     <br><br>
-    <!---Search Row Start-->
+
+
+    <!---Search & Sort Row Start-->
     <div class="container">
       <div class="row w-100">
         <div class="col-6 d-flex justify-content-center">
@@ -130,25 +153,28 @@
         </div>
       </div>
     </div>
+    <!---Search & Sort Row End-->
 
-    <!---Search Row End-->
     <br><br>
+
+
     <!--Product Item List Start-->
     <div class="row w-100 d-sm-flex justify-content-center" id="product_list">
 
-      <!-------Product  Items Start-->
+      <!-------Product  Items Start #from database-->
 
       <?php
       include('./Model/product_service.php');
       $productService = new ProductService();
       $productService->getAllProducts();
       ?>
-
       <!-------Product  Items End-->
 
     </div>
     <!---Product Item List End--->
+
     <br><br>
+
     <!----Pagination Start-->
     <div>
       <nav aria-label="Page navigation example">
@@ -163,43 +189,95 @@
 
   </div>
 
-  <!--  Account Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!--  Account Modal -- Start--->
+  <div class="modal fade" id="authentication" tabindex="-1" aria-labelledby="authenticationLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Your Account</h5>
+          <h5 class="modal-title" id="authenticationLabel"><i class="fa-solid fa-square-user"></i>&nbsp; Your Account</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
+        <form action="" method="post">
         <div class="modal-body">
+
+          <!---Sign in / Sign up Navigations--Start--->
           <ul class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
-            <button class="nav-link" id="nav-register-tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register" aria-selected="false">Register</button>
+            <button class="nav-link w-50 active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true"><i class="fa-solid fa-arrow-right-to-bracket"></i></i>&nbsp; Sign in</button>
+            <button class="nav-link w-50" id="nav-register-tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register" aria-selected="false"><i class="fa-solid fa-user-plus"></i>&nbsp; Sign up</button>
           </ul>
+          <!---Sign in / Sign up Navigations--End--->
+
+
           <div class="tab-content" id="nav-tabContent">
+
+            <!---Sign in Tab Pane--Start--->
             <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
               <div class="container">
                 <div class="container-fluid d-flex justify-content-center">
                   <img src="./Images/logo.png" alt="" height="100rem" width="100rem">
                 </div>
-                <label for="exampleFormControlInput1" class="form-label pt-3">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                <label for="exampleFormControlInput1" class="form-label pt-3">Password</label>
-                <input type="password" class="form-control" id="exampleFormControlInput1">
+                <label for="loginEmailInput" class="form-label pt-3">Email address</label>
+                <input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com">
+                <label for="loginPasswordInput" class="form-label pt-3">Password</label>
+                <input type="password" class="form-control" id="loginPasswordInput">
               </div>
             </div>
+            <!---Sign in Tab Pane--End--->
+
+
+            <!---Sign up Tab Pane--Start--->
             <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab" tabindex="0">
-              Velit harum cum laudantium natus dignissimos magni labore, officia rerum praesentium impedit corporis laborum.
+            <div class="container">
+
+                <div class="container-fluid d-flex flex-column align-items-center">
+                  <img src="./Images/sample_avatar.jpg" alt="" id="avatar" height="150" width="150" class="rounded-circle bg-light m-4 mb-2">
+                  <input type="file" accept=".jpg , .png , .jpeg" class="form-control w-55 mb-3" id="avatarInput" onchange="readURL(this);" >
+                </div>
+                
+                <div class="form-group has-feedback-left"></div>
+                <label for="fnameInput" class="form-label pt-3">First Name</label>
+                <input type="text" class="form-control" id="fnameInput" placeholder="ex:-John">
+
+                <label for="lnameInput" class="form-label pt-3">Last Name</label>
+                <input type="text" class="form-control" id="lnameInput" placeholder="ex:-Doe">
+
+                <label for="addressInput" class="form-label pt-3">Address</label>
+                <input type="text" class="form-control" id="addressInput" placeholder="ex:-54/A , Galle rd , Colombo 06">
+
+                <label for="phoneNumberInput" class="form-label pt-3">Phone Number</label>
+                <input type="number" class="form-control" id="phoneNumberInput" placeholder="ex:- 0778475987">
+
+                <label for="emailInput" class="form-label pt-3">Email address</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="John@example.com">
+
+                <label for="passwordInput" class="form-label pt-3">Password</label>
+                <input type="password" class="form-control" id="passwordInput">
+
+                <label for="confirmPasswordInput" class="form-label pt-3">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPasswordInput">
+
+              </div>
             </div>
+            <!---Sign up Tab Pane--End--->
+
           </div>
         </div>
+
+        <!---Account Modal footer buttons(signin/signup , close)--Start--->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary save">Save changes</button>
+          <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary save">...</button>
         </div>
+        <!---Account Modal footer buttons(signin/signup , close)--End--->
+        </form>
+
       </div>
     </div>
   </div>
+  <!--  Account Modal -- End--->
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="./View/script.js"></script>
 </body>
