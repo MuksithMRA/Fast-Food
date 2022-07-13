@@ -24,8 +24,11 @@
     border-radius: 1rem;
 }
 
-.product-card img{
+.product-card .card img{
     border-radius: 1rem 1rem 0 0;
 }
 
+.product-card .card{
+    border: none;
+}
 

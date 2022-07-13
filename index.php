@@ -15,9 +15,11 @@
       src="https://kit.fontawesome.com/09789629f4.js"
       crossorigin="anonymous"
     ></script>
+  
     <title>Fast Food</title>
   </head>
   <body>
+
     <!--Nav bar -- Start -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navTop">
       <div class="container-fluid">
@@ -157,29 +159,23 @@
     </div>
     
     <!---Search Row End-->
-    
+    <br><br>
     <!--Product Item List Start-->
     <div class="row w-100 d-sm-flex justify-content-center" id="product_list">
 
-      <!-------Product  Item 1 Start-->
-      <div class="col-12 col-lg-3 col-md-6 col-sm-12 p-5">
-        <div class="card " style="width:18rem;height: auto;"  id="product" > 
-       <img src="./Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-       <div class="card-body">
-         <h5 class="card-title">Bacon Cheese Burger</h5><br>
-         <h6 class="card-subtitle mb-2 text-muted ">(Burger)</h6>
-         <p class="card-text">LKR 500.00</p>
-         <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+    <!-------Product  Items Start-->
 
-       </div>
-     </div>
-    </div>
+    <?php
+     include('./Model/product_service.php');
+      $productService = new ProductService();
+     $productService->getAllProducts();
+    ?>
 
-    <!-------Product  Item 1 End-->
+    <!-------Product  Items End-->
     
     </div>
     <!---Product Item List End--->
-
+    <br><br>
     <!----Pagination Start-->
     <div>
       <nav aria-label="Page navigation example">
