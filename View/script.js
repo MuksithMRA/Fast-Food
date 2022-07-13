@@ -11,13 +11,19 @@ $(document).ready(function () {
     $(".nav").find(".active").removeClass("active");
     $(this).addClass("active");
     currentAuthScreen = $(this).text();
-    $(".modal-footer .save").text(currentAuthScreen + " now");
+    //$(".modal-footer .save").text(currentAuthScreen + " now");
+    changeText();
   });
 });
 
 $(document).ready(function () {
-  $(".modal-footer .save").text(currentAuthScreen + " now");
+  changeText();
+  //$(".modal-footer .save").text(currentAuthScreen + " now");
 });
+
+function changeText() {
+  document.querySelector(".modal-footer .save").textContent = currentAuthScreen;
+}
 
 //Adding preloader
 var loader = document.querySelector("#loader");
