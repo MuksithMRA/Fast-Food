@@ -61,3 +61,11 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+//Sign in Sign up button
+function onSubmitClick() {
+  $("#authe")
+  if(currentAuthScreen == "Sign in"){
+      jq
+  }
+}

@@ -1,6 +1,7 @@
 <?php
 
     require_once('./Helpers/DBConnection.php');
+    
     Class ProductService{
         private $products = array();
          public function getAllProducts()
