@@ -15,7 +15,7 @@
       src="https://kit.fontawesome.com/09789629f4.js"
       crossorigin="anonymous"
     ></script>
-  
+
     <title>Fast Food</title>
   </head>
   <body>
@@ -65,9 +65,9 @@
           </form>
           <div data-bs-toggle="collapse" style="width: 20px"></div>
           <form class="d-flex">
-          
 
-            
+
+
             <button
               type="button"
               class="btn btn-primary mx-auto"
@@ -118,7 +118,7 @@
         >
         <div id="carouselExampleControls" class="carousel slide w-70 " data-bs-ride="carousel">
           <div class="carousel-inner w-70">
-            
+
             <div class="carousel-item active w-70">
               <img src="./Images/home-img-1.png" class="d-block w-70" alt="...">
             </div>
@@ -158,7 +158,7 @@
         </div>
       </div>
     </div>
-    
+
     <!---Search Row End-->
     <br><br>
     <!--Product Item List Start-->
@@ -173,7 +173,7 @@
     ?>
 
     <!-------Product  Items End-->
-    
+
     </div>
     <!---Product Item List End--->
     <br><br>
