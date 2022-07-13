@@ -63,9 +63,17 @@ function readURL(input) {
 }
 
 //Sign in Sign up button
-function onSubmitClick() {
-  $("#authe")
+function validateAuthForm() {
+  const authForm = document.forms["authentication-form"];
   if(currentAuthScreen == "Sign in"){
-      jq
+    
+    const loginEmail = authForm["loginEmail"].value;
+    const loginPassword = authForm["loginPassword"].value;
+      if(loginEmail == '' || loginPassword == ''){
+        return false;
+      }
+      
+      return true;
   }
+  return false;
 }
