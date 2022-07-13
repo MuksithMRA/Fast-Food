@@ -19,9 +19,10 @@
     <title>Fast Food</title>
   </head>
   <body>
-
-    <!--Nav bar -- Start -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navTop">
+  <div id="loader"></div>
+  <div class="content">
+     <!--Nav bar -- Start -->
+     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navTop">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
           ><img src="./Images/logo.png" alt="" height="70px" width="70px"
@@ -187,7 +188,9 @@
       </nav>
     </div>
     <!------Pagination end-->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+  </div>
+       <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="./View/script.js"></script>
   </body>
 </html>
