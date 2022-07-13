@@ -49,11 +49,13 @@
           <div data-bs-toggle="collapse" style="width: 20px"></div>
           <form class="d-flex">
 
-
-
-            <button type="button" class="btn btn-primary mx-auto">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mx-auto open-auth" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="fa-solid fa-user"></i>&nbsp; Account
             </button>
+
+
+
           </form>
         </div>
       </div>
@@ -159,6 +161,44 @@
     </div>
     <!------Pagination end-->
 
+  </div>
+
+  <!--  Account Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Your Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
+            <button class="nav-link" id="nav-register-tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register" aria-selected="false">Register</button>
+          </ul>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
+              <div class="container">
+                <div class="container-fluid d-flex justify-content-center">
+                  <img src="./Images/logo.png" alt="" height="100rem" width="100rem">
+                </div>
+                <label for="exampleFormControlInput1" class="form-label pt-3">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label for="exampleFormControlInput1" class="form-label pt-3">Password</label>
+                <input type="password" class="form-control" id="exampleFormControlInput1">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab" tabindex="0">
+              Velit harum cum laudantium natus dignissimos magni labore, officia rerum praesentium impedit corporis laborum.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary save">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="./View/script.js"></script>
