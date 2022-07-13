@@ -1,9 +1,20 @@
-
+let  currentAuthScreen = "Login";
 //Navbar navigation
 $(".navbar .nav-link").on("click", function(){
     $(".navbar").find(".active").removeClass("active");
     $(this).addClass("active");
  });
+
+//Account modal Navigation
+$(".nav .nav-link").on("click", function(){
+    
+    $(".nav").find(".active").removeClass("active");
+    $(this).addClass("active");
+    currentAuthScreen =  $(this).text();
+    $(".modal-footer .save").text(currentAuthScreen+" now");
+ });
+
+$(".modal-footer .save").text(currentAuthScreen+" now");
 
 
  //Adding preloader
