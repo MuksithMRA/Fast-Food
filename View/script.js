@@ -1,12 +1,12 @@
 let currentAuthScreen = "Login";
 // Navbar navigation
-$(".navbar .nav-link").on("click", function() {
+$(".navbar .nav-link").on("click", function () {
   $(".navbar").find(".active").removeClass("active");
   $(this).addClass("active");
 });
 
 // Account modal Navigation
-$(".nav .nav-link").on("click", function() {
+$(".nav .nav-link").on("click", function () {
   $(".nav").find(".active").removeClass("active");
   $(this).addClass("active");
   currentAuthScreen = $(this).text();
@@ -23,16 +23,18 @@ function loadNow(opacity) {
     displayContent();
   } else {
     loader.style.opacity = opacity;
-    window.setTimeout(function() { loadNow(opacity - 0.05); }, 50);
+    window.setTimeout(function () {
+      loadNow(opacity - 0.05);
+    }, 50);
   }
 }
 
 function displayContent() {
-  loader.style.display = 'none';
-  document.getElementById('content').style.display = 'block';
+  loader.style.display = "none";
+  document.getElementById("content").style.display = "block";
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  loader = document.getElementById('loader');
+document.addEventListener("DOMContentLoaded", function () {
+  loader = document.getElementById("loader");
   loadNow(1);
 });
