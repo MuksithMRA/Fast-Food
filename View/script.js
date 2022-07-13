@@ -1,9 +1,10 @@
-let currentAuthScreen = "Login";
+let currentAuthScreen = "Sign in";
 //Navbar navigation
 $(".navbar .nav-link").on("click", function () {
   $(".navbar").find(".active").removeClass("active");
   $(this).addClass("active");
 });
+
 
 //Account modal Navigation
 $(document).ready(function () {
@@ -11,18 +12,16 @@ $(document).ready(function () {
     $(".nav").find(".active").removeClass("active");
     $(this).addClass("active");
     currentAuthScreen = $(this).text();
-    //$(".modal-footer .save").text(currentAuthScreen + " now");
     changeText();
   });
 });
 
-$(document).ready(function () {
-  changeText();
-  //$(".modal-footer .save").text(currentAuthScreen + " now");
-});
+changeText();
 
 function changeText() {
-  document.querySelector(".modal-footer .save").textContent = currentAuthScreen;
+  $(document).ready(function () {
+    $(".modal-footer .save").text(currentAuthScreen + " now");
+  });
 }
 
 //Adding preloader
