@@ -7,4 +7,3 @@ You need php on your system to run this web app locally
 
 to execute this source file
 
-#Latest Preview -> https://muksithmra.github.io/Fast-Food/
