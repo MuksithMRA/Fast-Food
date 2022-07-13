@@ -47,3 +47,17 @@ document.addEventListener("DOMContentLoaded", function () {
   loader = document.getElementById("loader");
   loadNow(1);
 });
+
+
+//Read profile pic & assign to image container
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#avatar').attr('src', e.target.result).width(150).height(150);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
