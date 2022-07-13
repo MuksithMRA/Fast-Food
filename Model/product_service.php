@@ -9,7 +9,7 @@
             $sql = "SELECT p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
             $this->products  = $dbConnection ->executeSelectQuery($sql);
             foreach ($this->products as $key => $value) {
-              echo '<div class="col-12 col-lg-3 col-md-6 col-sm-12 p-5">';
+              echo '<div class="col-12 col-lg-3 col-md-6 col-sm-12 p-5 product-card">';
               echo '<div class="card " style="width:18rem;height: auto;"  id="product" >';
               echo '<img src="data:image/jpeg;base64,'.base64_encode($value['image']).'" class="card-img-top rounded " alt="...">';
               echo '<div class="card-body">';
