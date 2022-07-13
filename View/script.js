@@ -1,7 +1,3 @@
-//Element definning
-const product_list = document.querySelector("#product_list");
-const product = document.querySelector('#product');
-const pagination = document.querySelector('.pagination');
 
 //Navbar navigation
 $(".navbar .nav-link").on("click", function(){
@@ -10,20 +6,7 @@ $(".navbar .nav-link").on("click", function(){
  });
 
 
- 
-//product list looping
-product_list.innerHTML = null;
- for (let index = 0; index < 5; index++) {
-    const col = document.createElement("div");
-    col.classList.add("col-12");
-    col.classList.add("col-lg-2");
-    col.classList.add("col-md-4");
-    col.classList.add("col-sm-6");
-    col.classList.add("p-3");
-    col.classList.add("product-card");
-    col.innerHTML = product.innerHTML;
-    product_list.appendChild(col);
-    
- }
-console.log()
+
+
+
 
