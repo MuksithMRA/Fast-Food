@@ -53,7 +53,7 @@
                 99+
                 <span class="visually-hidden">
                   cart items
-                </span> 
+                </span>
               </span>
               <i class="fa-solid fa-cart-shopping"></i>
             </a>
@@ -61,7 +61,7 @@
           <!-- cart Button trigger modal end -->
 
           <div data-bs-toggle="collapse" style="width: 20px"></div>
-          
+
           <!-- Account Button trigger modal start-->
           <form class="d-flex">
             <button type="button" class="btn btn-primary mx-auto open-auth" data-bs-toggle="modal" data-bs-target="#authentication">
@@ -135,7 +135,7 @@
       </div>
     </div>
     <!---Landing Page --- End-->
-    
+
     <br><br>
 
 
@@ -234,7 +234,7 @@
                   <img src="./Images/sample_avatar.jpg" alt="" id="avatar" height="150" width="150" class="rounded-circle bg-light m-4 mb-2">
                   <input type="file" accept=".jpg , .png , .jpeg" class="form-control w-55 mb-3" id="avatarInput" onchange="readURL(this);" >
                 </div>
-                
+
                 <div class="form-group has-feedback-left"></div>
                 <label for="fnameInput" class="form-label pt-3">First Name</label>
                 <input type="text" class="form-control" id="fnameInput" placeholder="ex:-John">
