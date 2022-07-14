@@ -8,6 +8,8 @@ const regPhone = document.querySelector("#phoneNumberInput");
 const regEmail = document.querySelector("#emailInput");
 const regPassword = document.querySelector("#passwordInput");
 const regConfirmPassword = document.querySelector("#confirmPasswordInput");
+const errorToast = document.querySelector("#errorToast");
+
 
 let currentAuthScreen = "Sign in";
 
@@ -24,6 +26,7 @@ $(document).ready(function () {
     $(this).addClass("active");
     currentAuthScreen = $(this).text();
     changeText();
+    
   });
 });
 
@@ -31,9 +34,11 @@ changeText();
 
 function changeText() {
   $(document).ready(function () {
-    $(".modal-footer .save").text(currentAuthScreen + " now");
+    $(".modal-footer .save").text(currentAuthScreen + " now").prop('value', currentAuthScreen);
   });
   onTabChange();
+  $('#auth-form')[0].reset();
+
 }
 
 //Adding preloader
@@ -81,7 +86,7 @@ function onTabChange() {
   } else if (currentAuthScreen.trim() == "Sign up") {
 
     //Verify password and confirm password matching
-    $('#passwordInput, #confirmPasswordInput').on('keyup', function () {
+    $('#confirmPasswordInput').on('keyup', function () {
       if ($('#passwordInput').val() == $('#confirmPasswordInput').val()) {
         $('#message').html('Matching with New Password').css('color', 'green');
       } else 
@@ -112,15 +117,30 @@ function manageLoginValidations() {
 function manageRegisterValidations() {
   loginEmail.removeAttribute("required");
   loginPassword.removeAttribute("required");
-  regAvatar.setAttribute("required", "");
   regFname.setAttribute("required", "");
   regLname.setAttribute("required", "");
   regAvatar.setAttribute("required", "");
   regEmail.setAttribute("required", "");
   regPassword.setAttribute("required", "");
-  regPassword.setAttribute("pattern","^(?=.*\d)(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$")
+  regPassword.setAttribute("pattern","^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#?$%^&*_=+-]).{8,}$")
   regPassword.setAttribute("title","Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters");
   regPhone.setAttribute("required", "");
-  regPhone.setAttribute("pattern","[789][0-9]{9}");
+  regPhone.setAttribute("pattern","[0-9]{3}-[0-9]{3}-[0-9]{4}");
   regConfirmPassword.setAttribute("required", "");
 }
+
+
+function validate() {
+  if(currentAuthScreen.trim()=="Sign up"){
+    if($('#passwordInput').val() != $('#confirmPasswordInput').val()){
+      const toast = new bootstrap.Toast(errorToast);
+      toast.show();
+      return false;
+    }else{
+        return true;
+    }
+  }else{
+    return true;
+  }
+}
+
