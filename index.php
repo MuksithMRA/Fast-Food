@@ -198,7 +198,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <form action="./Controller/authentication.php" method="POST" name="authentication-form" onsubmit="return validateAuthForm()">
+        <form action="./Controller/authentication.php" method="POST" name="authentication-form">
           <div class="modal-body">
 
             <!---Sign in / Sign up Navigations--Start--->
@@ -219,12 +219,10 @@
                   </div>
 
                   <label for="loginEmailInput" class="form-label pt-3">Email address</label>
-                  <input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com" name="loginEmail">
-                  <p id="emailValidation" class="d-none"></p>
+                  <input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com" name="loginEmail" >
 
                   <label for="loginPasswordInput" class="form-label pt-3">Password</label>
                   <input type="password" class="form-control" id="loginPasswordInput" name="loginPassword">
-                  <p id="passwordValidation" class="d-none"></p>
 
                 </div>
               </div>
@@ -261,7 +259,7 @@
 
                   <label for="confirmPasswordInput" class="form-label pt-3">Confirm Password</label>
                   <input type="password" name="confirmPassword" class="form-control" id="confirmPasswordInput">
-
+                  <span id='message'></span>
                 </div>
               </div>
               <!---Sign up Tab Pane--End--->
