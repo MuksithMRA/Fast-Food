@@ -53,7 +53,7 @@
                 99+
                 <span class="visually-hidden">
                   cart items
-                </span> 
+                </span>
               </span>
               <i class="fa-solid fa-cart-shopping"></i>
             </a>
@@ -61,7 +61,7 @@
           <!-- cart Button trigger modal end -->
 
           <div data-bs-toggle="collapse" style="width: 20px"></div>
-          
+
           <!-- Account Button trigger modal start-->
           <form class="d-flex">
             <button type="button" class="btn btn-primary mx-auto open-auth" data-bs-toggle="modal" data-bs-target="#authentication">
@@ -81,7 +81,7 @@
       <div class="row landing-page pt-20">
 
 
-      <!--Left Column start --->
+        <!--Left Column start --->
         <div class="col-12 col-lg-5 col-md-5 col-sm-12 d-flex flex-column justify-content-center px-5 newCol">
           <div class="mt-4 p-5 text-white rounded">
             <h1>Fast Food</h1>
@@ -135,7 +135,7 @@
       </div>
     </div>
     <!---Landing Page --- End-->
-    
+
     <br><br>
 
 
@@ -198,78 +198,81 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <form action="" method="post">
-        <div class="modal-body">
+        <form action="./Controller/authentication.php" method="POST" name="authentication-form">
+          <div class="modal-body">
 
-          <!---Sign in / Sign up Navigations--Start--->
-          <ul class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link w-50 active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true"><i class="fa-solid fa-arrow-right-to-bracket"></i></i>&nbsp; Sign in</button>
-            <button class="nav-link w-50" id="nav-register-tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register" aria-selected="false"><i class="fa-solid fa-user-plus"></i>&nbsp; Sign up</button>
-          </ul>
-          <!---Sign in / Sign up Navigations--End--->
+            <!---Sign in / Sign up Navigations--Start--->
+            <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="nav-link w-50 active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true"><i class="fa-solid fa-arrow-right-to-bracket"></i></i>&nbsp; Sign in</button>
+              <button class="nav-link w-50" id="nav-register-tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register" aria-selected="false"><i class="fa-solid fa-user-plus"></i>&nbsp; Sign up</button>
+            </ul>
+            <!---Sign in / Sign up Navigations--End--->
 
 
-          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-content" id="nav-tabContent">
 
-            <!---Sign in Tab Pane--Start--->
-            <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
-              <div class="container">
-                <div class="container-fluid d-flex justify-content-center">
-                  <img src="./Images/logo.png" alt="" height="100rem" width="100rem">
+              <!---Sign in Tab Pane--Start--->
+              <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
+                <div class="container">
+                  <div class="container-fluid d-flex justify-content-center">
+                    <img src="./Images/logo.png" alt="" height="100rem" width="100rem">
+                  </div>
+
+                  <label for="loginEmailInput" class="form-label pt-3">Email address</label>
+                  <input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com" name="loginEmail" >
+
+                  <label for="loginPasswordInput" class="form-label pt-3">Password</label>
+                  <input type="password" class="form-control" id="loginPasswordInput" name="loginPassword">
+
                 </div>
-                <label for="loginEmailInput" class="form-label pt-3">Email address</label>
-                <input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com">
-                <label for="loginPasswordInput" class="form-label pt-3">Password</label>
-                <input type="password" class="form-control" id="loginPasswordInput">
               </div>
-            </div>
-            <!---Sign in Tab Pane--End--->
+              <!---Sign in Tab Pane--End--->
 
 
-            <!---Sign up Tab Pane--Start--->
-            <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab" tabindex="0">
-            <div class="container">
+              <!---Sign up Tab Pane--Start--->
+              <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab" tabindex="0">
+                <div class="container">
 
-                <div class="container-fluid d-flex flex-column align-items-center">
-                  <img src="./Images/sample_avatar.jpg" alt="" id="avatar" height="150" width="150" class="rounded-circle bg-light m-4 mb-2">
-                  <input type="file" accept=".jpg , .png , .jpeg" class="form-control w-55 mb-3" id="avatarInput" onchange="readURL(this);" >
+                  <div class="container-fluid d-flex flex-column align-items-center">
+                    <img src="./Images/sample_avatar.jpg" alt="" id="avatar" height="150" width="150" class="rounded-circle bg-light m-4 mb-2">
+                    <input type="file" name="avatar" accept=".jpg , .png , .jpeg" class="form-control w-55 mb-3" id="avatarInput" onchange="readURL(this);" >
+                    
+                  </div>
+
+                  <label for="fnameInput" class="form-label pt-3">First Name</label>
+                  <input type="text" name="fname" class="form-control" id="fnameInput" placeholder="ex:-John" >
+
+                  <label for="lnameInput" class="form-label pt-3">Last Name</label>
+                  <input type="text" name="lname" class="form-control" id="lnameInput" placeholder="ex:-Doe" >
+
+                  <label for="addressInput" class="form-label pt-3">Address</label>
+                  <input type="text" name="address" class="form-control" id="addressInput" placeholder="ex:-54/A , Galle rd , Colombo 06" >
+
+                  <label for="phoneNumberInput" class="form-label pt-3">Phone Number</label>
+                  <input type="number" name="phone" class="form-control" id="phoneNumberInput" placeholder="ex:- 0778475987">
+
+                  <label for="emailInput" class="form-label pt-3">Email address</label>
+                  <input type="email" name="email" class="form-control" id="emailInput" placeholder="John@example.com">
+
+                  <label for="passwordInput" class="form-label pt-3">Password</label>
+                  <input type="password" name="password" class="form-control" id="passwordInput">
+
+                  <label for="confirmPasswordInput" class="form-label pt-3">Confirm Password</label>
+                  <input type="password" name="confirmPassword" class="form-control" id="confirmPasswordInput">
+                  <span id='message'></span>
                 </div>
-                
-                <div class="form-group has-feedback-left"></div>
-                <label for="fnameInput" class="form-label pt-3">First Name</label>
-                <input type="text" class="form-control" id="fnameInput" placeholder="ex:-John">
-
-                <label for="lnameInput" class="form-label pt-3">Last Name</label>
-                <input type="text" class="form-control" id="lnameInput" placeholder="ex:-Doe">
-
-                <label for="addressInput" class="form-label pt-3">Address</label>
-                <input type="text" class="form-control" id="addressInput" placeholder="ex:-54/A , Galle rd , Colombo 06">
-
-                <label for="phoneNumberInput" class="form-label pt-3">Phone Number</label>
-                <input type="number" class="form-control" id="phoneNumberInput" placeholder="ex:- 0778475987">
-
-                <label for="emailInput" class="form-label pt-3">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="John@example.com">
-
-                <label for="passwordInput" class="form-label pt-3">Password</label>
-                <input type="password" class="form-control" id="passwordInput">
-
-                <label for="confirmPasswordInput" class="form-label pt-3">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPasswordInput">
-
               </div>
-            </div>
-            <!---Sign up Tab Pane--End--->
+              <!---Sign up Tab Pane--End--->
 
+            </div>
           </div>
-        </div>
 
-        <!---Account Modal footer buttons(signin/signup , close)--Start--->
-        <div class="modal-footer">
-          <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary save">...</button>
-        </div>
-        <!---Account Modal footer buttons(signin/signup , close)--End--->
+          <!---Account Modal footer buttons(signin/signup , close)--Start--->
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary save">...</button>
+          </div>
+          <!---Account Modal footer buttons(signin/signup , close)--End--->
         </form>
 
       </div>
