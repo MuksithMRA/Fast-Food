@@ -198,7 +198,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <form action="./Controller/authentication.php" method="POST" name="authentication-form">
+        //<iframe name="screen" style="display:none;"></iframe>
+        <form action="./Controller/authentication.php"  method="POST" name="authentication-form" id="auth-form" onsubmit="return validate()">
           <div class="modal-body">
 
             <!---Sign in / Sign up Navigations--Start--->
@@ -219,10 +220,10 @@
                   </div>
 
                   <label for="loginEmailInput" class="form-label pt-3">Email address</label>
-                  <input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com" name="loginEmail" >
+                  <input type="email" name="loginEmail" class="form-control" id="loginEmailInput" placeholder="name@example.com">
 
                   <label for="loginPasswordInput" class="form-label pt-3">Password</label>
-                  <input type="password" class="form-control" id="loginPasswordInput" name="loginPassword">
+                  <input type="password" name="loginPassword" class="form-control" id="loginPasswordInput">
 
                 </div>
               </div>
@@ -235,29 +236,29 @@
 
                   <div class="container-fluid d-flex flex-column align-items-center">
                     <img src="./Images/sample_avatar.jpg" alt="" id="avatar" height="150" width="150" class="rounded-circle bg-light m-4 mb-2">
-                    <input type="file" name="avatar" accept=".jpg , .png , .jpeg" class="form-control w-55 mb-3" id="avatarInput" onchange="readURL(this);" >
-                    
+                    <input type="file" name="avatar" accept=".jpg , .png , .jpeg" class="form-control w-55 mb-3" id="avatarInput" onchange="readURL(this);">
+
                   </div>
 
-                  <label for="fnameInput" class="form-label pt-3">First Name</label>
-                  <input type="text" name="fname" class="form-control" id="fnameInput" placeholder="ex:-John" >
+                  <label for="fnameInput" class="form-label pt-3">First Name&nbsp;<span class="text-danger">*</span></label>
+                  <input type="text" name="fname" class="form-control" id="fnameInput" placeholder="ex:-John">
 
-                  <label for="lnameInput" class="form-label pt-3">Last Name</label>
-                  <input type="text" name="lname" class="form-control" id="lnameInput" placeholder="ex:-Doe" >
+                  <label for="lnameInput" class="form-label pt-3">Last Name&nbsp;<span class="text-danger">*</span></label>
+                  <input type="text" name="lname" class="form-control" id="lnameInput" placeholder="ex:-Doe">
 
-                  <label for="addressInput" class="form-label pt-3">Address</label>
-                  <input type="text" name="address" class="form-control" id="addressInput" placeholder="ex:-54/A , Galle rd , Colombo 06" >
+                  <label for="addressInput" class="form-label pt-3">Address&nbsp;<span class="text-danger">*</span></label>
+                  <input type="text" name="address" class="form-control" id="addressInput" placeholder="ex:-54/A , Galle rd , Colombo 06">
 
-                  <label for="phoneNumberInput" class="form-label pt-3">Phone Number</label>
-                  <input type="number" name="phone" class="form-control" id="phoneNumberInput" placeholder="ex:- 0778475987">
+                  <label for="phoneNumberInput" class="form-label pt-3">Phone Number&nbsp;<span class="text-danger">*</span></label>
+                  <input type="tel" name="phone" class="form-control" id="phoneNumberInput" placeholder="ex:- 0778475987">
 
-                  <label for="emailInput" class="form-label pt-3">Email address</label>
+                  <label for="emailInput" class="form-label pt-3">Email address&nbsp;<span class="text-danger">*</span></label>
                   <input type="email" name="email" class="form-control" id="emailInput" placeholder="John@example.com">
 
-                  <label for="passwordInput" class="form-label pt-3">Password</label>
+                  <label for="passwordInput" class="form-label pt-3">Password&nbsp;<span class="text-danger">*</span></label>
                   <input type="password" name="password" class="form-control" id="passwordInput">
 
-                  <label for="confirmPasswordInput" class="form-label pt-3">Confirm Password</label>
+                  <label for="confirmPasswordInput" class="form-label pt-3">Confirm Password&nbsp;<span class="text-danger">*</span></label>
                   <input type="password" name="confirmPassword" class="form-control" id="confirmPasswordInput">
                   <span id='message'></span>
                 </div>
@@ -270,7 +271,7 @@
           <!---Account Modal footer buttons(signin/signup , close)--Start--->
           <div class="modal-footer">
             <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary save">...</button>
+            <button type="submit" class="btn btn-primary save" name="submit-auth">...</button>
           </div>
           <!---Account Modal footer buttons(signin/signup , close)--End--->
         </form>
@@ -280,6 +281,20 @@
   </div>
   <!--  Account Modal -- End--->
 
+  <!---Error toast-Start-->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="./Images/icons8-close-64.png" class="rounded me-2" alt="error-icon" height="30" width="30">
+        <strong class="me-auto">Error !</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body text-danger">
+        Password doesn't match
+      </div>
+    </div>
+  </div>
+  <!---Error toast-End-->
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="./View/script.js"></script>

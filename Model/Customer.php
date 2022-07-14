@@ -1,21 +1,24 @@
 <?php
-
+include('../Model/User.php');
     Class Customer{
         private $id;
+		private $avatar;
         private $first_name;
         private $last_name;
         private $address;
         private $phone_number;
-        private $auth_id;
+		
+        private User $user;
 
-        public function __construct($id,$first_name,$last_name,$address,$phone_number,$auth_id)
+        public function __construct($id,$avatar,$first_name,$last_name,$address,$phone_number,$user)
         {
             $this->id = $id;
+			$this->avatar = $avatar;
             $this->first_name = $first_name;
             $this->last_name = $last_name;
             $this->address = $address;
             $this->phone_number = $phone_number;
-            $this->auth_id = $auth_id;
+            $this->user = $user;
         }
 
         
@@ -99,19 +102,35 @@
 		return $this;
 	}
 	
+	
 	/**
 	 * @return mixed
 	 */
-	function getAuth_id() {
-		return $this->auth_id;
+	function getAvatar() {
+		return $this->avatar;
 	}
 	
 	/**
-	 * @param mixed $auth_id 
+	 * @param mixed $avatar 
 	 * @return Customer
 	 */
-	function setAuth_id($auth_id): self {
-		$this->auth_id = $auth_id;
+	function setAvatar($avatar): self {
+		$this->avatar = $avatar;
+		return $this;
+	}
+	/**
+	 * @return User
+	 */
+	function getUser(): User {
+		return $this->user;
+	}
+	
+	/**
+	 * @param User $user 
+	 * @return Customer
+	 */
+	function setUser(User $user): self {
+		$this->user = $user;
 		return $this;
 	}
 }
