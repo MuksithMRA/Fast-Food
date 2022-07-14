@@ -236,7 +236,7 @@
                   <div class="container-fluid d-flex flex-column align-items-center">
                     <img src="./Images/sample_avatar.jpg" alt="" id="avatar" height="150" width="150" class="rounded-circle bg-light m-4 mb-2">
                     <input type="file" name="avatar" accept=".jpg , .png , .jpeg" class="form-control w-55 mb-3" id="avatarInput" onchange="readURL(this);" >
-                    
+
                   </div>
 
                   <label for="fnameInput" class="form-label pt-3">First Name</label>
