@@ -8,7 +8,7 @@ const regPhone = document.querySelector("#phoneNumberInput");
 const regEmail = document.querySelector("#emailInput");
 const regPassword = document.querySelector("#passwordInput");
 const regConfirmPassword = document.querySelector("#confirmPasswordInput");
-const errorToast = document.querySelector("#errorToast");
+const toastMessage = document.querySelector("#toastmessage");
 
 
 let currentAuthScreen = "Sign in";
@@ -125,15 +125,15 @@ function manageRegisterValidations() {
   regPassword.setAttribute("pattern","^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#?$%^&*_=+-]).{8,}$")
   regPassword.setAttribute("title","Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters");
   regPhone.setAttribute("required", "");
-  regPhone.setAttribute("pattern","[0-9]{3}-[0-9]{3}-[0-9]{4}");
+  regPhone.setAttribute("pattern","[0-9]{10}");
   regConfirmPassword.setAttribute("required", "");
 }
 
-
+//OnValidate Authentication form
 function validate() {
   if(currentAuthScreen.trim()=="Sign up"){
     if($('#passwordInput').val() != $('#confirmPasswordInput').val()){
-      const toast = new bootstrap.Toast(errorToast);
+      const toast = new bootstrap.Toast(toastMessage);
       toast.show();
       return false;
     }else{

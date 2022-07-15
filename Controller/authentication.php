@@ -19,11 +19,10 @@
 
 
     $userService = new UserService();
-    $isUserExist = $userService->getUser($loginEmail);
     
-    
-    
+      
     if($auth_type=="Sign in"){
+        $isUserExist = $userService->getUser($loginEmail);
         if($isUserExist){
             $customer = $userService->getCustomer();
             echo "User exists";
@@ -36,6 +35,10 @@
             echo "User Doesnt exists";
             header("Location:  ../index.php");
         }
+    }
+    
+    else if(trim($auth_type) =="Sign up"){
+        print_r(array($email));
     }
 
 ?>

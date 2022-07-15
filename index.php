@@ -198,7 +198,6 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        //<iframe name="screen" style="display:none;"></iframe>
         <form action="./Controller/authentication.php"  method="POST" name="authentication-form" id="auth-form" onsubmit="return validate()">
           <div class="modal-body">
 
@@ -283,7 +282,7 @@
 
   <!---Error toast-Start-->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="toastmessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <img src="./Images/icons8-close-64.png" class="rounded me-2" alt="error-icon" height="30" width="30">
         <strong class="me-auto">Error !</strong>
