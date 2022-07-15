@@ -19,7 +19,7 @@
   </head>
   <body>
     <!--Nav bar -- Start -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navTop">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
           ><img src="./Images/logo.png" alt="" height="70px" width="70px"
@@ -83,7 +83,7 @@
       <br><br>
       <div class="row landing-page pt-20">
         <div
-          class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex flex-column justify-content-center px-5"
+          class="col-12 col-lg-5 col-md-5 col-sm-12 d-flex flex-column justify-content-center px-5 newCol"
         >
           <div class="mt-4 p-5 text-white rounded">
             <h1>Fast Food</h1>
@@ -111,22 +111,83 @@
           <br />
         </div>
         <div
-          class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex flex-column justify-content-center newCol"
+          class="col-12 col-lg-7 col-md-7 col-sm-12  d-flex flex-column justify-content-center newCol"
         >
-          <img class="img-fluid" src="./Images/flatten (1).png" alt="" />
+        <div id="carouselExampleControls" class="carousel slide w-70 " data-bs-ride="carousel">
+          <div class="carousel-inner w-70">
+            
+            <div class="carousel-item active w-70">
+              <img src="./Images/home-img-1.png" class="d-block w-70" alt="...">
+            </div>
+            <div class="carousel-item w-70 ">
+              <img src="./Images/home-img-2.png" class="d-block w-70" alt="...">
+            </div>
+            <div class="carousel-item w-70">
+              <img src="./Images/home-img-3.png" class="d-block w-70" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
         </div>
       </div>
     </div>
 
     <!---Landing Page --- End-->
+    <br><br>
+    <!---Search Row Start-->
+    <div class="row w-100 px-3 pe-3">
+      <div class="col-6 d-flex justify-content-center">
+        <div class="input-group mb-3">
+          <span class="input-group-text bg-primary text-light" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" placeholder="Search your favorite food" aria-label="Search" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <a class="btn btn-outline-primary btn d-flex align-items-center" href="#" role="button">Sort &nbsp; <i class="fa-solid fa-arrow-down-short-wide"></i> </a>
+      </div>
+    </div>
+    <!---Search Row End-->
     
     <!--Product Item List Start-->
-    <div class="row ${1| ,row-cols-2,row-cols-3, auto,justify-content-md-center,|}">
-      <div class="col"></div>
-      <div class="col"></div>
+    <div class="row w-100 d-sm-flex justify-content-center" id="product_list">
+
+      <!-------Product  Item 1 Start-->
+      <div class="col-12 col-lg-3 col-md-6 col-sm-12 p-5">
+        <div class="card" style="width:18rem;"  id="product">
+       <img src="./Images/menu-2.jpg" class="card-img-top" alt="...">
+       <div class="card-body">
+         <h5 class="card-title">Card title</h5>
+         <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
+         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+       </div>
+     </div>
+    </div>
+
+    <!-------Product  Item 1 End-->
+    
     </div>
     <!---Product Item List End--->
 
+    <!----Pagination Start-->
+    <div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!------Pagination end-->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="./View/script.js"></script>
   </body>
