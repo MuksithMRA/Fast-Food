@@ -75,3 +75,38 @@
     margin: auto;
     display: block;
 }
+
+/* cart css */
+
+.totaldiv  {
+  border: 2px solid #ebebeb;
+  background: #f3f3f3;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 16px;
+  padding-bottom: 20px;
+
+  color: #252525;
+  text-transform: uppercase;
+  overflow: hidden;
+  float: right;
+  overflow-wrap: break-word;
+
+}
+
+
+/* .img-fluid {
+  max-width: 145px;
+  height: 98px;
+} */
+
+
+
+.minus:hover, .plus:hover{
+  background-color: #717fe0 !important;
+}
+
+
+.number-input button {
+  border: groove;
+}
