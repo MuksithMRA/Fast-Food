@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -9,7 +13,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./View/mediaquery.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/09789629f4.js" crossorigin="anonymous"></script>
+ 
+ 
 
   <title>Fast Food</title>
 </head>
@@ -63,11 +70,26 @@
           <div data-bs-toggle="collapse" style="width: 20px"></div>
 
           <!-- Account Button trigger modal start-->
-          <form class="d-flex">
-            <button type="button" class="btn btn-primary mx-auto open-auth" data-bs-toggle="modal" data-bs-target="#authentication">
-              <i class="fa-solid fa-user"></i>&nbsp; Account
-            </button>
+
+       
+          <?php if(isset($_SESSION["authenticated"])) { ?>
+
+            <form class="d-flex">
+            <a class="btn btn-primary mx-auto " href="./View//Register/register.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; My Profile </a>
+            </form>
+
+            <form class="d-flex">
+              <?php 
+
+              print_r( $_SESSION) ?>
+            <a class="btn btn-primary mx-auto " href="./View//Login//logout.php" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> </i>&nbsp; </a>
+            </form>
+           <?php }else{ ?> 
+            <form class="d-flex">
+            <a class="btn btn-primary mx-auto " href="./View/Login/login.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; Account </a>
           </form>
+
+            <?php } ?>
           <!-- Account Button trigger modal end-->
         </div>
       </div>
@@ -92,7 +114,9 @@
                 <i class="fa-solid fa-bowl-food"></i> &nbsp Select a Category
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">
+             action
+                </a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li>
                   <a class="dropdown-item" href="#">Something else here</a>
@@ -198,7 +222,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <form action="./Controller/authentication.php"  method="POST" name="authentication-form" id="auth-form" onsubmit="return validate()">
+        <form method="POST" name="authentication-form" id="auth-form" onsubmit="return validate()">
           <div class="modal-body">
 
             <!---Sign in / Sign up Navigations--Start--->
@@ -214,6 +238,17 @@
               <!---Sign in Tab Pane--Start--->
               <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
                 <div class="container">
+                  <?php if (isset($_GET['error'])) { $error = $_GET['error']; ?>
+                    <div class="alert alert-danger" role="alert">
+                    <?php echo $error ?></div>
+                  <?php } ?>
+
+                  <?php if (isset($_GET['success'])) { $success = $_GET['success']; ?>
+
+                    <div class="alert alert-danger" role="alert">
+                    <?php echo $success ?></div>
+
+                  <?php } ?>
                   <div class="container-fluid d-flex justify-content-center">
                     <img src="./Images/logo.png" alt="" height="100rem" width="100rem">
                   </div>
@@ -270,7 +305,7 @@
           <!---Account Modal footer buttons(signin/signup , close)--Start--->
           <div class="modal-footer">
             <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary save" name="submit-auth">...</button>
+            <button type="submit" class="btn btn-primary save" name="submit-auth" id="submitAuth">...</button>
           </div>
           <!---Account Modal footer buttons(signin/signup , close)--End--->
         </form>
@@ -285,7 +320,7 @@
     <div id="toastmessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <img src="./Images/icons8-close-64.png" class="rounded me-2" alt="error-icon" height="30" width="30">
-        <strong class="me-auto">Error !</strong>
+        <strong class="me-auto" id="heading">Error !</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body text-danger">
@@ -297,6 +332,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="./View/script.js"></script>
+  
 </body>
 
 </html>

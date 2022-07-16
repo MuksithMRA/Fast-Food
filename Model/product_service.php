@@ -28,4 +28,10 @@
 
        
 
-    }
+    	/**
+	 * @return mixed
+	 */
+	function getProducts() {
+		return $this->products;
+	}
+}

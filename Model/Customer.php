@@ -1,5 +1,5 @@
 <?php
-include('../Model/User.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Model/User.php');
     Class Customer{
         private $id;
 		private $avatar;

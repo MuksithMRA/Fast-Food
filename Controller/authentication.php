@@ -27,13 +27,16 @@
             $customer = $userService->getCustomer();
             echo "User exists";
             if(trim($customer->getUser()->getPassword())==trim($loginPassword)){
-                echo" Password Matched";
+                echo "Password Matched";
+                //header('Location:  ../index.php?success="Login Successfull"');
+                
             }else{
                 echo"Password doesnt matched";
+                //header('Location:  ../index.php?error="Password doesnt matched"');
             }
         }else{
             echo "User Doesnt exists";
-            header("Location:  ../index.php");
+            //header('Location:  ../index.php?error="User doesnt exists"');
         }
     }
     

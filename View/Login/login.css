@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap');
+
+*{
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0;
+}
+
+.login-bg {
+  background: url(/Images/login-bg.jpg);
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-bg-overlay {
+  position: absolute;
+  top: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(4px);
+  height: 100vh;
+}
+
+.login-card{
+background-color: white;
+  
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-form div{
+    width: 90%;
+}
+
+.login-card img{
+    text-align: center;
+}
+
+
+.login-logo{
+    width: 100%;
+}
+
+.register-link{
+    cursor: pointer;
+}
+
+#emailInput
+,#passwordInput{
+    padding: 10px;
+    border: none;
+    box-shadow: 5px 10px 15px -3px rgba(0,0,0,0.1);
+
+}
+.login-btn{
+   box-shadow: none; 
+}

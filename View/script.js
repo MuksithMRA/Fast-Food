@@ -130,17 +130,20 @@ function manageRegisterValidations() {
 }
 
 //OnValidate Authentication form
-function validate() {
-  if(currentAuthScreen.trim()=="Sign up"){
-    if($('#passwordInput').val() != $('#confirmPasswordInput').val()){
-      const toast = new bootstrap.Toast(toastMessage);
-      toast.show();
-      return false;
+
+//Show toast
+
+function showToast(message , isError) {
+    if(isError){
+        $("#toastmessage img").attr("src", "./Images/icons8-close-64.png");
+        $("#toastmessage #heading").text("Error !");
+        $("#toastmessage .toast-body").addClass("text-danger").text(message.toString());
     }else{
-        return true;
+
     }
-  }else{
-    return true;
-  }
+    const toast = new bootstrap.Toast(toastMessage);
+      toast.show();
 }
+
+
 
