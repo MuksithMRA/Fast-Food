@@ -67,3 +67,60 @@
   #avatar{
     object-fit: cover;
   }
+
+ /* .popup{
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    border-color: #333;
+    border-width: 1px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    padding: 0 30px 30px;
+   
+    visibility: hidden;
+
+  }
+  
+  .popup button{
+    width: 100px;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fdf46;
+    color: #fff;
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+  }
+
+  .open-popup{
+    visibility: visible;
+  }
+  */
+  .items{
+    overflow-y: auto;
+    max-height: 60%;
+  
+  }
+  .subtotal{
+    text-align: left;
+  }
+  .subtotal2{
+    text-align: right;
+  }
+  .delivery{
+    text-align: left;
+  }
+  .delivery2{
+    text-align: right;
+  }
+  .total{
+    text-align: left;
+  }
+  .total2{
+    text-align: right;
+  }
+  
