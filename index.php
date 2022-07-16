@@ -75,15 +75,13 @@
           <?php if(isset($_SESSION["authenticated"])) { ?>
 
             <form class="d-flex">
-            <a class="btn btn-primary mx-auto " href="./View//Register/register.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; My Profile </a>
+            <a class="btn btn-primary mx-auto " href="./View/Profile/profile.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; My Profile </a>
             </form>
 
             <form class="d-flex">
-              <?php 
-
-              print_r( $_SESSION) ?>
-            <a class="btn btn-primary mx-auto " href="./View//Login//logout.php" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> </i>&nbsp; </a>
+              <a class="btn btn-primary mx-auto " href="./View//Login//logout.php" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> </i>&nbsp; </a>
             </form>
+
            <?php }else{ ?> 
             <form class="d-flex">
             <a class="btn btn-primary mx-auto " href="./View/Login/login.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; Account </a>
@@ -91,6 +89,7 @@
 
             <?php } ?>
           <!-- Account Button trigger modal end-->
+          
         </div>
       </div>
     </nav>
