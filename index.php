@@ -1,5 +1,12 @@
 <?php 
   session_start();
+  include($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
+    $productService = new ProductService();
+    $cart_count = 0;
+  if(isset($_SESSION["authenticated"])) {
+    $productService->getCart();
+    $cart_count = $productService->getCartCount();
+  }
 ?>
 
 <html lang="en">
@@ -57,7 +64,7 @@
           <form class="d-flex">
             <a href="/View/Cart/cart.php" class="btn btn-primary mx-auto position-relative">
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                99+
+                <?php echo $cart_count ?>
                 <span class="visually-hidden">
                   cart items
                 </span>
@@ -187,8 +194,7 @@
       <!-------Product  Items Start #from database-->
 
       <?php
-      include('./Model/product_service.php');
-      $productService = new ProductService();
+  
       $productService->getAllProducts();
       ?>
       <!-------Product  Items End-->
