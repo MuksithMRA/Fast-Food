@@ -20,38 +20,50 @@
         <h3 class="d-flex justify-content-center align-items-center"><i class="fa-solid fa-cart-shopping"></i>&nbsp; My Cart</h3>
     </div>
 
-    <div class="container" style="margin-top:12vh;height:80vh;width:auto;overflow: auto;">
-        <ul class="list-group d-flex flex-column align-items-center" style="list-style: none;">
-           
-            <?php 
-                if(isset($_SESSION["authenticated"])) {
-                    
+    <?php if (isset($_SESSION["authenticated"])) { ?>
+        <div class="container" style="margin-top:12vh;height:80vh;width:auto;overflow: auto;">
+            <ul class="list-group d-flex flex-column align-items-center" style="list-style: none;">
+
+                <?php
+                
                     include($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
                     $productService = new ProductService();
-                    $productService->getCartProducts();
-                    if($productService == array()){
+                    $cart_Products = $productService->getCartProducts();
+                    
+                
+                    if ($cart_Products == array()) {
                         echo 'No items in cart';
                     }
-                }else{
-                    echo 'Please Login first'; 
-                }
-            ?>
-        </ul>
-    </div>
+                ?>
+            </ul>
+        </div>
 
 
-    <div class="cart-footer h-20 w-100 bg-primary px-3 py-2 text-white" style="position:fixed;bottom:0">
-        <div class="row">
+        <div class="cart-footer h-20 w-100 bg-primary px-3 py-2 text-white" style="position:fixed;bottom:0">
+            <div class="row">
 
-            <div class="col-8 d-flex justify-content-center align-items-start flex-column">
-                <h6>Delivery : LKR 500 </h6>
-                <h5>Total : LKR 1500</h5>
-            </div>
-            <div class="col-4 d-flex justify-content-center align-items-center">
-                <a class="btn btn-outline-light" href="#" role="button">Checkout</a>
+                <div class="col-8 d-flex justify-content-center align-items-start flex-column">
+                    <h6>Delivery : LKR 500 </h6>
+                    <h5>Total : LKR <?php echo $productService->getTotalPrice() ?></h5>
+                </div>
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                    <a class="btn btn-outline-light" href="#" role="button">Checkout</a>
+                </div>
             </div>
         </div>
-    </div>
+
+    <?php    
+    
+    }else{
+        echo '<div class="error-box">';
+        echo '<h6>Please Login first</h6>';
+        echo '<a class="btn btn-primary" href="/View/Login/login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp; Login</a>';
+        echo '</div>';
+
+    }
+    
+    
+    ?>
 </body>
 
 </html>

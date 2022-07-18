@@ -41,7 +41,7 @@
     }
     
     else if(trim($auth_type) =="Sign up"){
-        print_r(array($email));
+        
     }
 
 ?>

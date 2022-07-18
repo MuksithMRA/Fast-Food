@@ -4,6 +4,7 @@
     
     Class ProductService{
         private $products = array();
+        private $totalPrice = 0;
          public function getAllProducts()
         {
             $dbConnection = new DBConnection();
@@ -29,9 +30,8 @@
         public function getCartProducts(){
             $dbConnection = new DBConnection();
             $this->products = array();
-            $sql = "SELECT count(cart_id) AS cart_count, p.name as prod_name , c.name as cat_name , p.price , i.image , cart.qty from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id INNER JOIN cart ON cart.prod_id = p.product_id  WHERE cart.cust_id = ".$_SESSION["uid"]."";
+            $sql = "SELECT sum(price) AS total , count(cart_id) AS cart_count, p.name as prod_name , c.name as cat_name , p.price , i.image , cart.qty from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id INNER JOIN cart ON cart.prod_id = p.product_id  WHERE cart.cust_id = ".$_SESSION["uid"]."";
             $this->products  = $dbConnection ->executeSelectQuery($sql);
-            echo json_encode($this->products);
             if($this->products[0]['cart_count']>0){
                 foreach ($this->products as $key => $value) {  
                     echo '<li>';
@@ -51,12 +51,14 @@
                     echo '</div>';   
                     echo '</div>';
                     echo '</li>';
+                    $this->totalPrice = $value['total'];
                 }
                 return $this->products;
             }
             return array();
         }
 
+        
 
        
 
@@ -65,5 +67,11 @@
 	 */
 	function getProducts() {
 		return $this->products;
+	}
+	/**
+	 * @return mixed
+	 */
+	function getTotalPrice() {
+		return $this->totalPrice;
 	}
 }
