@@ -1,20 +1,100 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-    src="https://kit.fontawesome.com/09789629f4.js"
-    crossorigin="anonymous"
-  ></script>
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/09789629f4.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./product.css">
+  <title>Document</title>
 </head>
+
 <body>
 
+  <!--Back button-->
+
+  <div class="row">
+    <div class="button">
+      <button class="btn btn-control-prev" type="button" data-bs-target="#" data-bs-slide="prev">
+        <i class="fa-solid fa-chevron-left"></i>
+        <span class="btn-control-prev-icon" aria-hidden="false"></span>
+      </button>    
+    </div>
+  </div>
+
+  <div class="main">
+    
+    <!--Carousel-->
+
+    <div class="row">
+      <div class="col-12 col-lg-6 col-md-auto col-sm-auto">
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/Images/main.jpg" class="d-block w-100" alt="Grilled_Chicken">
+            </div>
+            <div class="carousel-item">
+              <img src="/Images/sub1.jpg" class="d-block w-100" alt="sub_img1">
+            </div>
+            <div class="carousel-item">
+              <img src="/Images/sub2.jpg" class="d-block w-100" alt="sub_img2">
+            </div>
+            <div class="carousel-item">
+              <img src="/Images/sub3.jpg" class="d-block w-100" alt="sub_img3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <!--Description-->
+      <div class="col-12 col-lg-6 col-md-auto col-sm-auto description">
+        <p class="title">
+          Grilled Chicken legs in barbecue sause with pepper seeds parsley, salt in a blck stone plate on a black stone table
+        </p><br>
+        <p class="price_qty">
+          Rs. 1400.00
+        </p><br><br>
+        <p class="price_qty">
+          Quantity :
+        </p>
+        <button type="button" class="btn btn-primary rounded rounded-circle">-</button> <cite> 1 </cite>
+        <button type="button" class="btn btn-primary rounded rounded-circle">+</button> <br><br><br>
+        <button type="button" class="cart btn btn-warning btn-lg"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>&nbsp &nbsp &nbsp
+        <button type="button" class="buy btn btn-primary btn-lg"><i class="fa-solid fa-bag-shopping"></i> Buy Now</button>
+      </div>
+    </div>
+    <h4>
+        Similar Items
+    </h4> <hr class="new1">
+    <div class="row">
+      <div class="col-12">
+        <div class="wrapper">
+          <div class="item">Box-1</div>
+          <div class="item">Box-2</div>
+          <div class="item">Box-3</div>
+          <div class="item">Box-4</div>
+          <div class="item">Box-5</div>
+          <div class="item">Box-6</div>
+          <div class="item">Box-7</div>
+          <div class="item">Box-8</div>
+          <div class="item">Box-9</div>
+          <div class="item">Box-10</div>
+          <div class="item">Box-11</div>
+          <div class="item">Box-12</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
