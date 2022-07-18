@@ -1,4 +1,4 @@
-<?php 
+1<?php 
   session_start();
 ?>
 
@@ -55,7 +55,7 @@
 
           <!-- cart Button trigger modal start -->
           <form class="d-flex">
-            <a href="./View/cart.html" class="btn btn-primary mx-auto position-relative">
+            <a href="/View//Cart/cart.php" class="btn btn-primary mx-auto position-relative">
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 99+
                 <span class="visually-hidden">
@@ -239,13 +239,13 @@
                 <div class="container">
                   <?php if (isset($_GET['error'])) { $error = $_GET['error']; ?>
                     <div class="alert alert-danger" role="alert">
-                    <?php echo $error ?></div>
+                    
                   <?php } ?>
 
                   <?php if (isset($_GET['success'])) { $success = $_GET['success']; ?>
 
                     <div class="alert alert-danger" role="alert">
-                    <?php echo $success ?></div>
+                   
 
                   <?php } ?>
                   <div class="container-fluid d-flex justify-content-center">
