@@ -11,5 +11,10 @@
     text-align: center;
     align-items: center;
   }
+
+  .login-jumborton{
+    display: none;
+  }
 }
+
 
