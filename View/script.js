@@ -85,6 +85,7 @@ function onTabChange() {
     manageLoginValidations();
   } else if (currentAuthScreen.trim() == "Sign up") {
 
+    
     //Verify password and confirm password matching
     $('#confirmPasswordInput').on('keyup', function () {
       if ($('#passwordInput').val() == $('#confirmPasswordInput').val()) {

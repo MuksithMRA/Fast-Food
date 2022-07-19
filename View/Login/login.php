@@ -58,7 +58,7 @@
   <!---Preloader end--->
 
 
-  <section class="container-fluid bg-primary login-bg"></section>
+  <section class="container-fluid login-bg"></section>
   <section class="container-fluid login-bg-overlay">
     <div class="row h-100">
       <div class="col-12 col-lg-5 login-jumborton"></div>
@@ -97,7 +97,7 @@
               </div>
               <br>
               <button class="btn btn-primary login-btn w-50 mb-4" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp; Login</button>
-              <p style="font-size:15px">Don't you have an account? <a class="text-primary register-link">Register now</a></p>
+              <p style="font-size:15px">Don't you have an account? <a class="text-primary register-link" href="/View/Register/register.php">Register now</a></p>
 
             </form>
             </p>
