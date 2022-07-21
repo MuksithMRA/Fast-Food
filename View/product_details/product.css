@@ -1,0 +1,108 @@
+.main {
+    margin: 30px 40px 20px 40px;
+}
+
+.button {
+    padding: 1%;
+}
+
+/*.carousel-item {
+    padding-left: 10%;
+    padding-top: 2%;
+} */
+
+.d-block {
+    border-radius: 40px;
+}
+
+.description {
+    padding: 2% 3%;
+}
+
+/* .title {
+    padding-top: 3%;
+    padding-left: 3%;
+} */
+/*.price_qty {
+    padding-left: 3%;
+} */
+
+.cart {
+   /* margin-left: 20px; */
+    border-radius: 25px;
+    background-color: #FF9F1A;
+    --bs-btn-font-size: 16px;
+}
+
+.buy {
+    border-radius: 25px;
+    background-color: #0336ff;
+    --bs-btn-font-size: 16px;
+    width: 130px;
+}
+
+.rounded {
+    background-color: #0336ff;
+   /* margin-left: 20px; */
+    font-style: color(white);
+}
+
+cite {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+h4 {
+    padding-top: 30px;
+}
+
+hr.new1 {
+    width: 50px;
+    border: 3px solid;
+    color: #0336ff;
+}
+
+.wrapper {
+    height: 180px;
+    border: 1px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+}
+
+.wrapper .item {
+    min-width: 150px;
+    height: 140px;
+    line-height: 120px;
+    text-align: center;
+    background-color: aliceblue;
+    margin-right: 3px;
+}
+
+/*Scroll bar Style*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+.list-group::-webkit-scrollbar{
+    height: 0.5vw;
+    width: 20px;
+} 
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb,div::-webkit-scrollbar-thumb {
+    background: #FF9F1A;
+    border-radius: 20px; 
+    
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
