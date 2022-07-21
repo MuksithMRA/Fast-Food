@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/09789629f4.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./product.css">
-  <title>Document</title>
+  <title>Product Page</title>
 </head>
 
 <body>
@@ -49,12 +49,13 @@
 
       <!--Description-->
       <div class="col-12 col-lg-6 col-md-auto col-sm-auto description mt-3 mt-3">
-        <div class="title h3">
+        <div class="title h3 mb-4">
           Grilled Chicken legs in barbecue sause with pepper seeds parsley, salt in a blck stone plate on a black stone table
         </div>
         <p class="price_qty">
           Rs. 1400.00
-        </p><br>
+        </p>
+        <br>
         <count-txt class="price_qty me-5">
           Quantity
         </count-txt>

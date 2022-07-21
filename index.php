@@ -128,14 +128,12 @@ if (isset($_SESSION["authenticated"])) {
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <?php if(isset($categories)){ 
-                          foreach ($categories as $key => $value){ 
-                            echo print_r($categories); 
+                          foreach ($categories as $cat){ 
                 ?>
-                <script>console.log("done")</script>
 
                   <li>
                     <a class="dropdown-item" href="#">
-                        <!-- <?php //echo '<script>console.log('.$value['name'].');</script>' ?> -->
+                        <?php echo $cat->getName()?> 
                     </a>
                   </li>
                 
@@ -207,8 +205,7 @@ if (isset($_SESSION["authenticated"])) {
       <!-------Product  Items Start #from database-->
 
       <?php
-
-      $productService->getAllProducts();
+        $productService->getAllProducts("Root");
       ?>
       <!-------Product  Items End-->
 

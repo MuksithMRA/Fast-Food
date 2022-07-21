@@ -7,13 +7,18 @@ class ProductService
     private $products = array();
     private $totalPrice = 0;
     private $cartCount = 0;
-    public function getAllProducts()
+    public function getAllProducts(?String $category)
     {
         $dbConnection = new DBConnection();
         $this->products = array();
-        $sql = "SELECT p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
+        if($category == null){
+            $sql = "SELECT count(p.product_id) AS prod_count, p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
+        }else{
+            $sql = "SELECT count(p.product_id) AS prod_count,p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id WHERE c.name = '$category'";
+        }
+        
         $this->products  = $dbConnection->executeSelectQuery($sql);
-        if (count($this->products) > 0) {
+        if ($this->products[0]["prod_count"] > 0) {
             foreach ($this->products as $key => $value) {
                 echo '<div class="col-12 col-lg-3 col-md-6 col-sm-12 p-5 product-card">';
                 echo '<div class="card " style="width:18rem;height: auto;"  id="product" >';
@@ -29,6 +34,8 @@ class ProductService
                 echo '</div>';
                 echo '</div>';
             }
+        }else{
+            echo "No Product Result found";
         }
     }
 
