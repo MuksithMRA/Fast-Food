@@ -88,21 +88,21 @@ hr.new1 {
 .list-group::-webkit-scrollbar{
     height: 0.5vw;
     width: 20px;
-} 
-  
+}
+
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
   }
-   
+
   /* Handle */
   ::-webkit-scrollbar-thumb,div::-webkit-scrollbar-thumb {
     background: #FF9F1A;
-    border-radius: 20px; 
-    
+    border-radius: 20px;
+
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
   }

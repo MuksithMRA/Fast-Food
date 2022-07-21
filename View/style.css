@@ -14,7 +14,7 @@
 }
 
 .landing-page,.navTop{
-   background-color: #FF9F1A; 
+   background-color: #FF9F1A;
 
 }
 
@@ -48,21 +48,21 @@
 ::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
   }
-   
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #FF9F1A; 
-    border-radius: 20px; 
+    background: #FF9F1A;
+    border-radius: 20px;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
   }
 
   #avatar{
