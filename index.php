@@ -1,3 +1,14 @@
+<?php 
+  session_start();
+  include($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
+    $productService = new ProductService();
+    $cart_count = 0;
+  if(isset($_SESSION["authenticated"])) {
+    $productService->getCart();
+    $cart_count = $productService->getCartCount();
+  }
+?>
+
 <html lang="en">
 
 <head>
@@ -9,7 +20,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./View/mediaquery.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/09789629f4.js" crossorigin="anonymous"></script>
+ 
+ 
 
   <title>Fast Food</title>
 </head>
@@ -48,9 +62,9 @@
 
           <!-- cart Button trigger modal start -->
           <form class="d-flex">
-            <a href="./View/cart.html" class="btn btn-primary mx-auto position-relative">
+            <a href="/View/Cart/cart.php" class="btn btn-primary mx-auto position-relative">
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                99+
+                <?php echo $cart_count ?>
                 <span class="visually-hidden">
                   cart items
                 </span>
@@ -63,12 +77,26 @@
           <div data-bs-toggle="collapse" style="width: 20px"></div>
 
           <!-- Account Button trigger modal start-->
-          <form class="d-flex">
-            <button type="button" class="btn btn-primary mx-auto open-auth" data-bs-toggle="modal" data-bs-target="#authentication">
-              <i class="fa-solid fa-user"></i>&nbsp; Account
-            </button>
+
+       
+          <?php if(isset($_SESSION["authenticated"])) { ?>
+
+            <form class="d-flex me-3">
+            <a class="btn btn-primary mx-auto " href="./View/Profile/profile.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; My Profile </a>
+            </form>
+
+            <form class="d-flex">
+              <a class="btn btn-primary mx-auto " href="./View//Login/logout.php" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> </i>&nbsp; </a>
+            </form>
+
+           <?php }else{ ?> 
+            <form class="d-flex">
+            <a class="btn btn-primary mx-auto " href="./View/Login/login.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; Account </a>
           </form>
+
+            <?php } ?>
           <!-- Account Button trigger modal end-->
+
         </div>
       </div>
     </nav>
@@ -92,7 +120,9 @@
                 <i class="fa-solid fa-bowl-food"></i> &nbsp Select a Category
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">
+             action
+                </a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li>
                   <a class="dropdown-item" href="#">Something else here</a>
@@ -164,8 +194,7 @@
       <!-------Product  Items Start #from database-->
 
       <?php
-      include('./Model/product_service.php');
-      $productService = new ProductService();
+  
       $productService->getAllProducts();
       ?>
       <!-------Product  Items End-->
@@ -189,104 +218,14 @@
 
   </div>
 
-  <!--  Account Modal -- Start--->
-  <div class="modal fade" id="authentication" tabindex="-1" aria-labelledby="authenticationLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="authenticationLabel"><i class="fa-solid fa-square-user"></i>&nbsp; Your Account</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        //<iframe name="screen" style="display:none;"></iframe>
-        <form action="./Controller/authentication.php"  method="POST" name="authentication-form" id="auth-form" onsubmit="return validate()">
-          <div class="modal-body">
-
-            <!---Sign in / Sign up Navigations--Start--->
-            <ul class="nav nav-tabs" id="nav-tab" role="tablist">
-              <button class="nav-link w-50 active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true"><i class="fa-solid fa-arrow-right-to-bracket"></i></i>&nbsp; Sign in</button>
-              <button class="nav-link w-50" id="nav-register-tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register" aria-selected="false"><i class="fa-solid fa-user-plus"></i>&nbsp; Sign up</button>
-            </ul>
-            <!---Sign in / Sign up Navigations--End--->
-
-
-            <div class="tab-content" id="nav-tabContent">
-
-              <!---Sign in Tab Pane--Start--->
-              <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
-                <div class="container">
-                  <div class="container-fluid d-flex justify-content-center">
-                    <img src="./Images/logo.png" alt="" height="100rem" width="100rem">
-                  </div>
-
-                  <label for="loginEmailInput" class="form-label pt-3">Email address</label>
-                  <input type="email" name="loginEmail" class="form-control" id="loginEmailInput" placeholder="name@example.com">
-
-                  <label for="loginPasswordInput" class="form-label pt-3">Password</label>
-                  <input type="password" name="loginPassword" class="form-control" id="loginPasswordInput">
-
-                </div>
-              </div>
-              <!---Sign in Tab Pane--End--->
-
-
-              <!---Sign up Tab Pane--Start--->
-              <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab" tabindex="0">
-                <div class="container">
-
-                  <div class="container-fluid d-flex flex-column align-items-center">
-                    <img src="./Images/sample_avatar.jpg" alt="" id="avatar" height="150" width="150" class="rounded-circle bg-light m-4 mb-2">
-                    <input type="file" name="avatar" accept=".jpg , .png , .jpeg" class="form-control w-55 mb-3" id="avatarInput" onchange="readURL(this);">
-
-                  </div>
-
-                  <label for="fnameInput" class="form-label pt-3">First Name&nbsp;<span class="text-danger">*</span></label>
-                  <input type="text" name="fname" class="form-control" id="fnameInput" placeholder="ex:-John">
-
-                  <label for="lnameInput" class="form-label pt-3">Last Name&nbsp;<span class="text-danger">*</span></label>
-                  <input type="text" name="lname" class="form-control" id="lnameInput" placeholder="ex:-Doe">
-
-                  <label for="addressInput" class="form-label pt-3">Address&nbsp;<span class="text-danger">*</span></label>
-                  <input type="text" name="address" class="form-control" id="addressInput" placeholder="ex:-54/A , Galle rd , Colombo 06">
-
-                  <label for="phoneNumberInput" class="form-label pt-3">Phone Number&nbsp;<span class="text-danger">*</span></label>
-                  <input type="tel" name="phone" class="form-control" id="phoneNumberInput" placeholder="ex:- 0778475987">
-
-                  <label for="emailInput" class="form-label pt-3">Email address&nbsp;<span class="text-danger">*</span></label>
-                  <input type="email" name="email" class="form-control" id="emailInput" placeholder="John@example.com">
-
-                  <label for="passwordInput" class="form-label pt-3">Password&nbsp;<span class="text-danger">*</span></label>
-                  <input type="password" name="password" class="form-control" id="passwordInput">
-
-                  <label for="confirmPasswordInput" class="form-label pt-3">Confirm Password&nbsp;<span class="text-danger">*</span></label>
-                  <input type="password" name="confirmPassword" class="form-control" id="confirmPasswordInput">
-                  <span id='message'></span>
-                </div>
-              </div>
-              <!---Sign up Tab Pane--End--->
-
-            </div>
-          </div>
-
-          <!---Account Modal footer buttons(signin/signup , close)--Start--->
-          <div class="modal-footer">
-            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary save" name="submit-auth">...</button>
-          </div>
-          <!---Account Modal footer buttons(signin/signup , close)--End--->
-        </form>
-
-      </div>
-    </div>
-  </div>
-  <!--  Account Modal -- End--->
+  
 
   <!---Error toast-Start-->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="toastmessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <img src="./Images/icons8-close-64.png" class="rounded me-2" alt="error-icon" height="30" width="30">
-        <strong class="me-auto">Error !</strong>
+        <strong class="me-auto" id="heading">Error !</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body text-danger">
@@ -298,6 +237,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="./View/script.js"></script>
+  
 </body>
 
 </html>

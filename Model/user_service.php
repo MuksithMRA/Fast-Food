@@ -1,21 +1,23 @@
 <?php
-require_once('../Helpers/DBConnection.php');
-require('../Model/Customer.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Helpers/DBConnection.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Model/Customer.php');
+
     class UserService{
 
-        private Customer $customer;
+        public static Customer $customer;
 
-        public function getUser($email)
+        public static function getUser($email)
         {
             
             $sql = "SELECT * FROM customer c JOIN auth a ON c.auth_id = a.uid WHERE email = '".$email."'";
+            $rowCountSql = "SELECT count(uid) AS rowCount FROM customer c JOIN auth a ON c.auth_id = a.uid WHERE email = '".$email."'";
             $dbcontroller = new DBConnection();
+            $rowCount = $dbcontroller->executeSelectQuery($rowCountSql);
             $result = $dbcontroller->executeSelectQuery($sql);
 
             
-            
-            if(count($result)>0){
-                $this->customer = new Customer(
+            if($rowCount[0]["rowCount"]>0){
+                self::$customer = new Customer(
                     $result[0]["customer_id"],
                     $result[0]["avatar"],
                     $result[0]["first_name"],
@@ -36,12 +38,78 @@ require('../Model/Customer.php');
             }
            
         }
-    	/**
-	 * @return Customer
-	 */
-	function getCustomer(): Customer {
-		return $this->customer;
-	}
+
+        public static function getAuth($email){
+            echo $email;
+            $sql = "SELECT count(uid) AS uid_count , uid ,email,password, registered_date FROM auth WHERE email = '$email' ";
+            $dbcontroller = new DBConnection();
+            $result = $dbcontroller->executeSelectQuery($sql);
+
+            if($result[0]["uid_count"]>0){
+                return new User(
+                    $result[0]["uid"],
+                    $result[0]["email"],
+                    $result[0]["password"],
+                    $result[0]["registered_date"]
+                );
+            }
+            return null;
+        }
+
+
+        public static function registerUser(Customer $cust){
+
+            $dbcontroller = new DBConnection();
+			$email = $cust->getUser()->getEmail();
+            $password = $cust->getUser()->getPassword();
+            $regDate = $cust->getUser()->getCreatedDate();
+
+            $sql="INSERT INTO auth VALUES(
+                0,
+                '$email',
+                '$password',
+                '$regDate'
+            )";
+
+            $result = $dbcontroller->executeQuery($sql);
+			if($result != 0){
+                echo "Auth submitted";
+                $user = UserService::getAuth($cust->getUser()->getEmail());
+                if($user != null){
+                    $cust_id = $cust->getId();
+                    $avatar = $cust->getAvatar();
+                    $fname = $cust->getFirst_name();
+                    $lname =$cust->getLast_name();
+                    $address=$cust->getAddress();
+                    $phone=$cust->getPhone_number();
+                    $uid=$user->getUid();
+
+                    $sql = "INSERT INTO customer VALUES(
+                        '$cust_id',
+                        '$avatar',
+                        '$fname',
+                        '$lname',
+                        '$address',
+                        '$phone',
+                        '$uid'
+                    )";
+
+                    $result = $dbcontroller->executeQuery($sql);
+                    if($result != 0){
+                        session_start();
+                        $_SESSION["uid"] = $user->getUid();
+                        $_SESSION["email"] = $user->getEmail();
+                        $_SESSION["authenticated"] = true;
+                        echo "Customer submitted";
+                        return true;
+                    }
+                }
+                
+			}
+            return false;
+            
+        }
+    
 }
 
 ?>

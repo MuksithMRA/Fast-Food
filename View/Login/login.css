@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap");
+
+* {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  padding: 0;
+}
+
+.login-bg {
+  background: url(/Images/login-bg.jpg);
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-bg-overlay {
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+
+  height: 100vh;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-form div {
+  width: 90%;
+}
+
+.login-card img {
+  text-align: center;
+}
+
+.login-logo {
+  width: 100%;
+}
+
+.register-link {
+  cursor: pointer;
+}
+
+#emailInput,
+#passwordInput {
+  padding: 10px;
+  border: none;
+  box-shadow: 5px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.login-btn {
+  box-shadow: none;
+}
