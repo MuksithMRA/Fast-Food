@@ -1,13 +1,19 @@
 <?php
 session_start();
 include($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/Model/category_service.php');
 $productService = new ProductService();
+$categoryService = new CategoryService();
+if(count($categoryService->getAllCategories())>0){
+  $categories = $categoryService->getCategories();
+}
 $cart_count = 0;
 if (isset($_SESSION["authenticated"])) {
   $productService->getCart();
   $cart_count = $productService->getCartCount();
   $email = $_SESSION["email"];
 }
+
 ?>
 
 <html lang="en">
@@ -121,13 +127,19 @@ if (isset($_SESSION["authenticated"])) {
                 <i class="fa-solid fa-bowl-food"></i> &nbsp Select a Category
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">
-                    action
-                  </a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
+                <?php if(isset($categories)){ 
+                          foreach ($categories as $key => $value){ 
+                            echo print_r($categories); 
+                ?>
+                <script>console.log("done")</script>
+
+                  <li>
+                    <a class="dropdown-item" href="#">
+                        <!-- <?php //echo '<script>console.log('.$value['name'].');</script>' ?> -->
+                    </a>
+                  </li>
+                
+                <?php }} ?>
               </ul>
             </div>
           </div>

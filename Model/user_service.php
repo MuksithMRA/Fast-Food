@@ -73,7 +73,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/Model/Customer.php');
 
             $result = $dbcontroller->executeQuery($sql);
 			if($result != 0){
-                echo "Auth submitted";
                 $user = UserService::getAuth($cust->getUser()->getEmail());
                 if($user != null){
                     $cust_id = $cust->getId();
@@ -95,6 +94,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/Model/Customer.php');
                     )";
 
                     $result = $dbcontroller->executeQuery($sql);
+                    $avatarNew = $dbcontroller->executeQuery("SELECT avatar FROM customer WHERE customer_id =  '$cust_id'")[0]['avatar'];
                     if($result != 0){
                         session_start();
                         $_SESSION["uid"] = $user->getUid();
@@ -102,10 +102,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/Model/Customer.php');
                         $_SESSION["authenticated"] = true;
                         $_SESSION["fname"] = $fname;
                         $_SESSION["lname"] = $lname;
-                        $_SESSION["avatar"] = $avatar;
+                        $_SESSION["avatar"] = $avatarNew;
                         $_SESSION["address"] = $address;
                         $_SESSION["phone"] = $phone;
-                        echo "Customer submitted";
                         return true;
                     }
                 }

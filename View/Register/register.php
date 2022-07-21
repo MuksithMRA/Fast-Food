@@ -1,6 +1,6 @@
 <?php
 session_start();
-$msg = "";
+
 if (isset($_POST["register"])) {
     include_once($_SERVER['DOCUMENT_ROOT'] . '/Model/user_service.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/Model/Customer.php');
@@ -77,11 +77,11 @@ if (isset($_POST["register"])) {
                 <div class="row mb-3">
                     <h3 class="d-flex  align-items-center justify-content-center">Register</h3>
 
-                    <?php if ($msg != "") { ?>
+                    <?php if (isset($msg)) { ?>
                         <div class="alert alert-danger mt-2 mb-2" role="alert">
                             <?php
                             echo $msg;
-                            $msg = "";
+                            unset($msg);
                             ?>
                         </div>
                     <?php } ?>
