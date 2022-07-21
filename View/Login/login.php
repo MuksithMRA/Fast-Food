@@ -15,6 +15,11 @@
         $_SESSION["uid"] = UserService::$customer->getUser()->getUid();
         $_SESSION["email"] = $loginEmail;
         $_SESSION["authenticated"] = true;
+        $_SESSION["fname"] = UserService::$customer->getFirst_name();
+        $_SESSION["lname"] = UserService::$customer->getLast_name();
+        $_SESSION["avatar"] = UserService::$customer->getAvatar();
+        $_SESSION["address"] = UserService::$customer->getAddress();
+        $_SESSION["phone"] = UserService::$customer->getPhone_number();
         header('Location: /index.php');
         die;
 

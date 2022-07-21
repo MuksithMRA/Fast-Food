@@ -1,12 +1,13 @@
-<?php 
-  session_start();
-  include($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
-    $productService = new ProductService();
-    $cart_count = 0;
-  if(isset($_SESSION["authenticated"])) {
-    $productService->getCart();
-    $cart_count = $productService->getCartCount();
-  }
+<?php
+session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
+$productService = new ProductService();
+$cart_count = 0;
+if (isset($_SESSION["authenticated"])) {
+  $productService->getCart();
+  $cart_count = $productService->getCartCount();
+  $email = $_SESSION["email"];
+}
 ?>
 
 <html lang="en">
@@ -22,8 +23,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/09789629f4.js" crossorigin="anonymous"></script>
- 
- 
+
+
 
   <title>Fast Food</title>
 </head>
@@ -78,23 +79,23 @@
 
           <!-- Account Button trigger modal start-->
 
-       
-          <?php if(isset($_SESSION["authenticated"])) { ?>
+
+          <?php if (isset($_SESSION["authenticated"])) { ?>
 
             <form class="d-flex me-3">
-            <a class="btn btn-primary mx-auto " href="./View/Profile/profile.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; My Profile </a>
+              <button type="button" class="btn btn-primary mx-auto " data-bs-toggle="modal" data-bs-target="#ProfileIntro"><i class="fa-solid fa-user"></i>&nbsp; My Profile </button>
             </form>
 
             <form class="d-flex">
               <a class="btn btn-primary mx-auto " href="./View//Login/logout.php" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> </i>&nbsp; </a>
             </form>
 
-           <?php }else{ ?> 
+          <?php } else { ?>
             <form class="d-flex">
-            <a class="btn btn-primary mx-auto " href="./View/Login/login.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; Account </a>
-          </form>
+              <a class="btn btn-primary mx-auto " href="./View/Login/login.php" role="button"><i class="fa-solid fa-user"></i>&nbsp; Account </a>
+            </form>
 
-            <?php } ?>
+          <?php } ?>
           <!-- Account Button trigger modal end-->
 
         </div>
@@ -121,8 +122,8 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="#">
-             action
-                </a></li>
+                    action
+                  </a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li>
                   <a class="dropdown-item" href="#">Something else here</a>
@@ -194,7 +195,7 @@
       <!-------Product  Items Start #from database-->
 
       <?php
-  
+
       $productService->getAllProducts();
       ?>
       <!-------Product  Items End-->
@@ -218,7 +219,7 @@
 
   </div>
 
-  
+
 
   <!---Error toast-Start-->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
@@ -235,9 +236,37 @@
   </div>
   <!---Error toast-End-->
 
+  <!-- Profile Intro Start -->
+  <div class="modal fade" id="ProfileIntro" tabindex="-1" aria-labelledby="ProfileIntroLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="avatar-pic text-center" style="width: 100%;">
+
+          <img src="<?php echo "data:image/jpeg;base64," . base64_encode($_SESSION['avatar']) .""; ?>" alt="" id="avatar" height="150" width=150 class="rounded-circle m-4 mb-2">
+          </div>
+          <div class="user-details text-center">
+            <h4><?php echo "".$_SESSION["fname"]." ".$_SESSION["lname"]."" ?></h4>
+            <p><?php echo $email ?></p>
+            <br><br>
+
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <a class="btn btn-primary" href="#" role="button"> View Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Profile Intro End -->
+
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="./View/script.js"></script>
-  
+
 </body>
 
 </html>

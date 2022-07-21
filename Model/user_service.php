@@ -100,6 +100,11 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/Model/Customer.php');
                         $_SESSION["uid"] = $user->getUid();
                         $_SESSION["email"] = $user->getEmail();
                         $_SESSION["authenticated"] = true;
+                        $_SESSION["fname"] = $fname;
+                        $_SESSION["lname"] = $lname;
+                        $_SESSION["avatar"] = $avatar;
+                        $_SESSION["address"] = $address;
+                        $_SESSION["phone"] = $phone;
                         echo "Customer submitted";
                         return true;
                     }
