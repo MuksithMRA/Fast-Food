@@ -32,7 +32,8 @@ class ProductService
         }
     }
 
-    public function getCart(){
+    public function getCart()
+    {
         $dbConnection = new DBConnection();
         $this->products = array();
         $sql = "SELECT sum(price) AS total , count(cart_id) AS cart_count, p.name as prod_name , c.name as cat_name , p.price , i.image , cart.qty from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id INNER JOIN cart ON cart.prod_id = p.product_id  WHERE cart.cust_id = " . $_SESSION["uid"] . "";
@@ -75,24 +76,22 @@ class ProductService
     /**
      * @return mixed
      */
-    function getProducts()
+    public function getProducts()
     {
         return $this->products;
     }
     /**
      * @return mixed
      */
-    function getTotalPrice()
+    public function getTotalPrice()
     {
         return $this->totalPrice;
     }
     /**
      * @return mixed
      */
-    function getCartCount()
+    public function getCartCount()
     {
         return $this->cartCount;
     }
-
-    
 }
