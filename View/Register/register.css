@@ -38,3 +38,26 @@
   border: none;
   box-shadow: 5px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
+
+/*Scroll bar Style*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FF9F1A; 
+  border-radius: 20px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
