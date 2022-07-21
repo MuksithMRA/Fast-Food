@@ -19,27 +19,7 @@ $(".navbar .nav-link").on("click", function () {
   $(this).addClass("active");
 });
 
-//Account modal Navigation
-$(document).ready(function () {
-  $(".nav .nav-link").on("click", function () {
-    $(".nav").find(".active").removeClass("active");
-    $(this).addClass("active");
-    currentAuthScreen = $(this).text();
-    changeText();
-    
-  });
-});
 
-changeText();
-
-function changeText() {
-  $(document).ready(function () {
-    $(".modal-footer .save").text(currentAuthScreen + " now").prop('value', currentAuthScreen);
-  });
-  onTabChange();
-  $('#auth-form')[0].reset();
-
-}
 
 //Adding preloader
 var loader = document.querySelector("#loader");
@@ -65,72 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
   loadNow(1);
 });
 
-//Read profile pic & assign to image container
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
 
-    reader.onload = function (e) {
-      $("#avatar").attr("src", e.target.result).width(150).height(150);
-    };
 
-    reader.readAsDataURL(input.files[0]);
-  }
-}
 
-//Validation with Sign in Sign up button
-
-function onTabChange() {
-  if (currentAuthScreen.trim() == "Sign in") {
-    manageLoginValidations();
-  } else if (currentAuthScreen.trim() == "Sign up") {
-
-    
-    //Verify password and confirm password matching
-    $('#confirmPasswordInput').on('keyup', function () {
-      if ($('#passwordInput').val() == $('#confirmPasswordInput').val()) {
-        $('#message').html('Matching with New Password').css('color', 'green');
-      } else 
-        $('#message').html('Not Matching with New Password').css('color', 'red');
-    });
-    
-    manageRegisterValidations();
-  }
-}
-
-function manageLoginValidations() {
-
-  loginEmail.setAttribute("required", "");
-  loginPassword.setAttribute("required", "");
-  regAvatar.removeAttribute("required");
-  regFname.removeAttribute("required");
-  regLname.removeAttribute("required");
-  regAvatar.removeAttribute("required");
-  regEmail.removeAttribute("required");
-  regPassword.removeAttribute("required");
-  regPassword.removeAttribute("pattern");
-  regPassword.removeAttribute("title");
-  regPhone.removeAttribute("required");
-  regPhone.removeAttribute("pattern");
-  regConfirmPassword.removeAttribute("required");
-}
-
-function manageRegisterValidations() {
-  loginEmail.removeAttribute("required");
-  loginPassword.removeAttribute("required");
-  regFname.setAttribute("required", "");
-  regLname.setAttribute("required", "");
-  regAvatar.setAttribute("required", "");
-  regEmail.setAttribute("required", "");
-  regPassword.setAttribute("required", "");
-  regPassword.setAttribute("pattern","^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#?$%^&*_=+-]).{8,}$")
-  regPassword.setAttribute("title","Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters");
-  regPhone.setAttribute("required", "");
-  regPhone.setAttribute("pattern","[0-9]{10}");
-  regConfirmPassword.setAttribute("required", "");
-}
-
-//OnValidate Authentication form
 
 //Show toast
 

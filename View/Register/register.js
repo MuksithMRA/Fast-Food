@@ -35,14 +35,33 @@ function readURL(input) {
   }
 }
 
- //Verify password and confirm password matching
- $(document).ready(function () {
-    $('#confirmPasswordInput').on('keyup', function () {
-        
-        if ($('#passwordInput').val() == $('#confirmPasswordInput').val()) {
-          $('#message').html('Matching with New Password').css('color', 'green');
-        } else 
-          $('#message').html('Not Matching with New Password').css('color', '#ff1744');
-      });
- });
- 
+//Verify password and confirm password matching
+let isMatch = false;
+$(document).ready(function () {
+  $("#confirmPasswordInput").on("keyup", function () {
+    if ($("#passwordInput").val() == $("#confirmPasswordInput").val()) {
+      $("#message").html("Matching with New Password").css("color", "green");
+      isMatch = true;
+    } else{
+       $("#message").html("Not Matching with New Password").css("color", "#ff1744");
+       isMatch = false;
+    }
+  });
+});
+
+
+
+//Show toast
+
+function showToast(message , isError) {
+  if(isError){
+      $("#toastmessage img").attr("src", "/Images/icons8-close-64.png");
+      $("#toastmessage #heading").text("Error !");
+      $("#toastmessage .toast-body").addClass("text-danger").text(message.toString());
+  }else{
+
+  }
+  const toast = new bootstrap.Toast(toastMessage);
+    toast.show();
+}
+
