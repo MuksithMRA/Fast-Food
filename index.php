@@ -289,8 +289,9 @@ if (isset($_SESSION["authenticated"])) {
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="./View/script.js"></script>
 
+  
   <script>
-    changeSelected('<?php echo $_GET["cato"] ?>')
+    changeSelected('<?php echo isset($_GET["cato"])? $_GET["cato"]:"null" ?>')
   </script>
 
 <?php if(isset($_GET["status"])){ ?>

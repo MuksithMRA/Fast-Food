@@ -104,5 +104,5 @@ hr.new1 {
     height: 100vh;
     z-index: 9999999;
     overflow: visible;
-    background: #fff url('../Images/loader.gif') no-repeat center center;
+    background: #fff url('/Images/loader.gif') no-repeat center center;
   }
