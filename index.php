@@ -126,7 +126,7 @@ if (isset($_SESSION["authenticated"])) {
             <form action="./View/category.php" method="post">
               <div class="row">
                 <div class="col-12 col-lg-5 d-flex flex-column align-items-center justify-content-center mb-2">
-                 
+
                   <select class="form-control m-0" id="categorySelection" name="categories">
                   <option value="null" selected>All Categories</option>
                     <?php if (isset($categories)) {
