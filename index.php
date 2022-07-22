@@ -62,7 +62,7 @@ if (isset($_SESSION["authenticated"])) {
             <a class="nav-link" href="#">Services</a>
           </li>
           <li class="nav-item mx-auto">
-            <a class="nav-link" href="/about_us.php">About Us</a>
+            <a class="nav-link" href="/View/About Us/about_us.php">About Us</a>
           </li>
         </ul>
 
