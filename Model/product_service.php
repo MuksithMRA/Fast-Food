@@ -11,7 +11,7 @@ class ProductService
     {
         $dbConnection = new DBConnection();
         $this->products = array();
-        if($category == null){
+        if($category == "null"){
             $sql = "SELECT count(p.product_id) AS prod_count, p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
         }else{
             $sql = "SELECT count(p.product_id) AS prod_count,p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id WHERE c.name = '$category'";

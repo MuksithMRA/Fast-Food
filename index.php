@@ -4,7 +4,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/Model/category_service.php');
 $productService = new ProductService();
 $categoryService = new CategoryService();
-if(count($categoryService->getAllCategories())>0){
+if (count($categoryService->getAllCategories()) > 0) {
   $categories = $categoryService->getCategories();
 }
 $cart_count = 0;
@@ -122,24 +122,32 @@ if (isset($_SESSION["authenticated"])) {
             <h1>Fast Food</h1>
             <h6>Find your favorite & delicous foods from here !</h6>
             <br>
-            <div class="dropdown">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-bowl-food"></i> &nbsp Select a Category
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <?php if(isset($categories)){ 
-                          foreach ($categories as $cat){ 
-                ?>
 
-                  <li>
-                    <a class="dropdown-item" href="#">
-                        <?php echo $cat->getName()?> 
-                    </a>
-                  </li>
-                
-                <?php }} ?>
-              </ul>
-            </div>
+            <form action="./View/category.php" method="post">
+              <div class="row">
+                <div class="col-12 col-lg-5 d-flex flex-column align-items-center justify-content-center mb-2">
+                 
+                  <select class="form-control m-0" id="categorySelection" name="categories">
+                  <option value="null" selected>All Categories</option>
+                    <?php if (isset($categories)) {
+                      foreach ($categories as $cat) {
+                    ?>
+                        <option value="<?php echo $cat->getName()  ?>">
+                          <?php echo $cat->getName() ?> (<?php echo $cat->getProduct_count() ?>)
+                        </option>
+
+
+                    <?php }
+                    } ?>
+                  </select>
+                </div>
+
+                <div class="col-12 col-lg-6 d-flex flex-column align-items-lg-start justify-content-center mb-2">
+                  <input class="btn btn-primary" type="submit" value="submit">
+                </div>
+              </div>
+            </form>
+
           </div>
           <br />
         </div>
@@ -205,8 +213,14 @@ if (isset($_SESSION["authenticated"])) {
       <!-------Product  Items Start #from database-->
 
       <?php
-        $productService->getAllProducts("Root");
+      if (isset($_GET["cato"])) {
+        $productService->getAllProducts($_GET["cato"]);
+      } else {
+        $productService->getAllProducts("null");
+      }
+
       ?>
+      </div>
       <!-------Product  Items End-->
 
     </div>
@@ -256,10 +270,10 @@ if (isset($_SESSION["authenticated"])) {
         <div class="modal-body">
           <div class="avatar-pic text-center" style="width: 100%;">
 
-          <img src="<?php echo "data:image/jpeg;base64," . base64_encode($_SESSION['avatar']) .""; ?>" alt="" id="avatar" height="150" width=150 class="rounded-circle m-4 mb-2">
+            <img src="<?php echo "data:image/jpeg;base64," . base64_encode($_SESSION['avatar']) . ""; ?>" alt="" id="avatar" height="150" width=150 class="rounded-circle m-4 mb-2">
           </div>
           <div class="user-details text-center">
-            <h4><?php echo "".$_SESSION["fname"]." ".$_SESSION["lname"]."" ?></h4>
+            <h4><?php echo "" . $_SESSION["fname"] . " " . $_SESSION["lname"] . "" ?></h4>
             <p><?php echo $email ?></p>
             <br><br>
 
@@ -275,6 +289,7 @@ if (isset($_SESSION["authenticated"])) {
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="./View/script.js"></script>
+  <script> changeSelected('<?php echo $_GET["cato"] ?>') </script>
 
 </body>
 
