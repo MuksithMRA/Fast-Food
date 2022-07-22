@@ -20,6 +20,7 @@
         $_SESSION["avatar"] = UserService::$customer->getAvatar();
         $_SESSION["address"] = UserService::$customer->getAddress();
         $_SESSION["phone"] = UserService::$customer->getPhone_number();
+        $_SESSION["cust_id"]=UserService::$customer->getId();
         header('Location: /index.php');
         die;
 
