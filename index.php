@@ -59,10 +59,10 @@ if (isset($_SESSION["authenticated"])) {
             <a class="nav-link" href="#product_list">Browse Foods</a>
           </li>
           <li class="nav-item mx-auto">
-            <a class="nav-link" href="./View/checkout_layout.html">Checkout</a>
+            <a class="nav-link" href="#">Services</a>
           </li>
           <li class="nav-item mx-auto">
-            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" href="/about_us.php">About Us</a>
           </li>
         </ul>
 
@@ -295,11 +295,16 @@ if (isset($_SESSION["authenticated"])) {
 
 
   <?php if(isset($GET["status"])){?>
+    <script>console.log("Hello");</script>
   <?php  if ($_GET["status"] == "auth_fail") { ?>
     <script>
       showToast("Please login to add this product to cart !",true);
     </script>
-  <?php } ?>
+  <?php }else if($_GET["status"]=="added"){ ?>
+    <script>
+      showToast("Added to cart successfully !",false);
+    </script>
+  <?php }?>
   <?php }?>
   
 

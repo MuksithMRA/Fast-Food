@@ -55,7 +55,7 @@ function showToast(message , isError) {
         $("#toastmessage #heading").text("Error !");
         $("#toastmessage .toast-body").removeClass("text-dark").addClass("text-danger").text(message.toString());
     }else{
-      $("#toastmessage img").attr("src", "./Images/icons8-close-64.png");
+      $("#toastmessage img").attr("src", "./Images/icons8-done-64.png");
       $("#toastmessage #heading").text("Success !");
       $("#toastmessage .toast-body").removeClass("text-danger").addClass("text-dark").text(message.toString());
     }
