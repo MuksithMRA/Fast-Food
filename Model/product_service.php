@@ -36,13 +36,13 @@ class ProductService
                 $buildcartData = http_build_query($cartData);
                 echo '<div class="col-12 col-lg-3 col-md-6 col-sm-12 p-5 product-card">';
                 echo '<div class="card " style="width:18rem;height: auto;"  id="product" >';
-                echo '<a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php?product_id='.$value["product_id"].'">' ;
+                echo '<a class="card-block text-decoration-none" href="/View/product_details/product.php?product_id='.$value["product_id"].'">' ;
                 echo '<img src="data:image/jpeg;base64,' . base64_encode($value['image']) . '" class="card-img-top rounded " alt="...">';
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $value["prod_name"] . '</h5>';
                 echo '<h6 class="card-subtitle mb-2 text-muted ">' . $value["cat_name"] . '</h6>';
                 echo '<p class="card-text mb-3">LKR ' . $value["price"] . '</p>';
-                echo '<a  class="btn btn-primary stretched-link" href="/View/Cart/add_to_cart.php?'.$buildcartData.'" role="button"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>';
+                echo '<a  class="btn btn-primary" href="/View/Cart/add_to_cart.php?'.$buildcartData.'" role="button"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>';
                 echo '</div>';
                 echo '</a>';
                 echo '</div>';
