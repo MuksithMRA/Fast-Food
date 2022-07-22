@@ -105,6 +105,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/Model/Customer.php');
                         $_SESSION["avatar"] = $avatarNew;
                         $_SESSION["address"] = $address;
                         $_SESSION["phone"] = $phone;
+                        $_SESSION["cust_id"] = $cust_id;
                         return true;
                     }
                 }

@@ -1,4 +1,4 @@
-$
+const toastMessage = document.getElementById("toastmessage");
 
 
 let currentAuthScreen = "Sign in";
@@ -53,9 +53,11 @@ function showToast(message , isError) {
     if(isError){
         $("#toastmessage img").attr("src", "./Images/icons8-close-64.png");
         $("#toastmessage #heading").text("Error !");
-        $("#toastmessage .toast-body").addClass("text-danger").text(message.toString());
+        $("#toastmessage .toast-body").removeClass("text-dark").addClass("text-danger").text(message.toString());
     }else{
-
+      $("#toastmessage img").attr("src", "./Images/icons8-close-64.png");
+      $("#toastmessage #heading").text("Success !");
+      $("#toastmessage .toast-body").removeClass("text-danger").addClass("text-dark").text(message.toString());
     }
     const toast = new bootstrap.Toast(toastMessage);
       toast.show();
