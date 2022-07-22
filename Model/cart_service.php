@@ -20,7 +20,7 @@ class CartService
                 return false;
             }
         }else{
-            $sql = "INSERT INTO cart VALUES('$cart_id','$prod_id','$cust_id')";
+            $sql = "INSERT INTO cart VALUES('$cart_id','$prod_id','$cust_id','$qty')";
             $rows = $dbConnection->executeQuery($sql);
 
             if ($rows > 0) {
