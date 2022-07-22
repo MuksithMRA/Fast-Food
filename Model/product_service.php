@@ -12,9 +12,9 @@ class ProductService
         $dbConnection = new DBConnection();
         $this->products = array();
         if($category == "null"){
-            $sql = "SELECT count(p.product_id) AS prod_count, p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
+            $sql = "SELECT p.product_id , count(p.product_id) AS prod_count, p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
         }else{
-            $sql = "SELECT count(p.product_id) AS prod_count,p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id WHERE c.name = '$category'";
+            $sql = "SELECT p.product_id , count(p.product_id) AS prod_count,p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id WHERE c.name = '$category'";
         }
         
         $this->products  = $dbConnection->executeSelectQuery($sql);
@@ -22,12 +22,12 @@ class ProductService
             foreach ($this->products as $key => $value) {
                 echo '<div class="col-12 col-lg-3 col-md-6 col-sm-12 p-5 product-card">';
                 echo '<div class="card " style="width:18rem;height: auto;"  id="product" >';
-                echo '<a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">' ;
+                echo '<a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php?product_id='.$value["product_id"].'">' ;
                 echo '<img src="data:image/jpeg;base64,' . base64_encode($value['image']) . '" class="card-img-top rounded " alt="...">';
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $value["prod_name"] . '</h5>';
                 echo '<h6 class="card-subtitle mb-2 text-muted ">' . $value["cat_name"] . '</h6>';
-                echo '<p class="card-text">LKR ' . $value["price"] . '</p>';
+                echo '<p class="card-text mb-3">LKR ' . $value["price"] . '</p>';
                 echo '<a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>';
                 echo '</div>';
                 echo '</a>';

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/Images/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/09789629f4.js" crossorigin="anonymous"></script>
@@ -80,100 +81,97 @@
 
     <ul class="list-group border-0 d-flex flex-row align-items-center" style="width: 100%;overflow:auto;scrollbar-width: thin;">
       <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
+        <div class="card " style="width:18rem;height: auto;" id="product">
           <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
             <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
+            <div class="card-body">
+              <h5 class="card-title">Title of the card</h5>
+              <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
+              <p class="card-text">LKR 500</p>
+              <a class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+            </div>
+          </a>
         </div>
       </li>
       <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
+        <div class="card " style="width:18rem;height: auto;" id="product">
           <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
             <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
+            <div class="card-body">
+              <h5 class="card-title">Title of the card</h5>
+              <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
+              <p class="card-text">LKR 500</p>
+              <a class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+            </div>
+          </a>
         </div>
       </li>
       <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
+        <div class="card " style="width:18rem;height: auto;" id="product">
           <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
             <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
+            <div class="card-body">
+              <h5 class="card-title">Title of the card</h5>
+              <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
+              <p class="card-text">LKR 500</p>
+              <a class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+            </div>
+          </a>
         </div>
       </li>
       <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
+        <div class="card " style="width:18rem;height: auto;" id="product">
           <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
             <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
+            <div class="card-body">
+              <h5 class="card-title">Title of the card</h5>
+              <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
+              <p class="card-text">LKR 500</p>
+              <a class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+            </div>
+          </a>
         </div>
       </li>
       <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
+        <div class="card " style="width:18rem;height: auto;" id="product">
           <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
             <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
+            <div class="card-body">
+              <h5 class="card-title">Title of the card</h5>
+              <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
+              <p class="card-text">LKR 500</p>
+              <a class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+            </div>
+          </a>
         </div>
       </li>
       <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
+        <div class="card " style="width:18rem;height: auto;" id="product">
           <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
             <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
+            <div class="card-body">
+              <h5 class="card-title">Title of the card</h5>
+              <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
+              <p class="card-text">LKR 500</p>
+              <a class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+            </div>
+          </a>
         </div>
       </li>
       <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
+        <div class="card " style="width:18rem;height: auto;" id="product">
           <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
             <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
+            <div class="card-body">
+              <h5 class="card-title">Title of the card</h5>
+              <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
+              <p class="card-text">LKR 500</p>
+              <a class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+            </div>
+          </a>
         </div>
       </li>
-   
-
     </ul>
-
   </div>
 </body>
 
