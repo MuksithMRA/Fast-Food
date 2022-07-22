@@ -5,13 +5,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/Model/category_service.php');
 $productService = new ProductService();
 $categoryService = new CategoryService();
 if (count($categoryService->getAllCategories()) > 0) {
-  $categories = $categoryService->getCategories();
+    $categories = $categoryService->getCategories();
 }
 $cart_count = 0;
 if (isset($_SESSION["authenticated"])) {
-  $productService->getCart();
-  $cart_count = $productService->getCartCount();
-  $email = $_SESSION["email"];
+    $productService->getCart();
+    $cart_count = $productService->getCartCount();
+    $email = $_SESSION["email"];
 }
 
 ?>
@@ -129,15 +129,16 @@ if (isset($_SESSION["authenticated"])) {
                 <select class="form-control m-0" id="categorySelection" name="categories">
                   <option value="null" selected> All Categories</option>
                   <?php if (isset($categories)) {
-                    foreach ($categories as $cat) {
-                  ?>
+    foreach ($categories as $cat) {
+        ?>
                       <option value="<?php echo $cat->getName()  ?>">
                         <?php echo $cat->getName() ?> (<?php echo $cat->getProduct_count() ?>)
                       </option>
 
 
-                  <?php }
-                  } ?>
+                  <?php
+    }
+} ?>
                 </select>
               </div>
 
@@ -213,9 +214,9 @@ if (isset($_SESSION["authenticated"])) {
 
     <?php
     if (isset($_GET["cato"])) {
-      $productService->showAllProducts($_GET["cato"]);
+        $productService->showAllProducts($_GET["cato"]);
     } else {
-      $productService->showAllProducts("null");
+        $productService->showAllProducts("null");
     }
 
     ?>
@@ -294,13 +295,13 @@ if (isset($_SESSION["authenticated"])) {
   </script>
 
 
-  <?php if(isset($GET["status"])){?>
+  <?php if (isset($GET["status"])) {?>
     <script>console.log("Hello");</script>
   <?php  if ($_GET["status"] == "auth_fail") { ?>
     <script>
       showToast("Please login to add this product to cart !",true);
     </script>
-  <?php }else if($_GET["status"]=="added"){ ?>
+  <?php } elseif ($_GET["status"]=="added") { ?>
     <script>
       showToast("Added to cart successfully !",false);
     </script>
