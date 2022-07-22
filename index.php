@@ -307,7 +307,7 @@ if (isset($_SESSION["authenticated"])) {
     </script>
   <?php }?>
   <?php }?>
-  
+
 
 </body>
 
