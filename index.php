@@ -5,13 +5,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/Model/category_service.php');
 $productService = new ProductService();
 $categoryService = new CategoryService();
 if (count($categoryService->getAllCategories()) > 0) {
-  $categories = $categoryService->getCategories();
+    $categories = $categoryService->getCategories();
 }
 $cart_count = 0;
 if (isset($_SESSION["authenticated"])) {
-  $productService->getCart();
-  $cart_count = $productService->getCartCount();
-  $email = $_SESSION["email"];
+    $productService->getCart();
+    $cart_count = $productService->getCartCount();
+    $email = $_SESSION["email"];
 }
 
 ?>
@@ -130,15 +130,16 @@ if (isset($_SESSION["authenticated"])) {
                   <select class="form-control m-0" id="categorySelection" name="categories">
                   <option value="null" selected>All Categories</option>
                     <?php if (isset($categories)) {
-                      foreach ($categories as $cat) {
-                    ?>
+    foreach ($categories as $cat) {
+        ?>
                         <option value="<?php echo $cat->getName()  ?>">
                           <?php echo $cat->getName() ?> (<?php echo $cat->getProduct_count() ?>)
                         </option>
 
 
-                    <?php }
-                    } ?>
+                    <?php
+    }
+} ?>
                   </select>
                 </div>
 
@@ -214,9 +215,9 @@ if (isset($_SESSION["authenticated"])) {
 
       <?php
       if (isset($_GET["cato"])) {
-        $productService->getAllProducts($_GET["cato"]);
+          $productService->getAllProducts($_GET["cato"]);
       } else {
-        $productService->getAllProducts("null");
+          $productService->getAllProducts("null");
       }
 
       ?>
