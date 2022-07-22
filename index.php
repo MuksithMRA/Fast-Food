@@ -133,7 +133,7 @@ if (isset($_SESSION["authenticated"])) {
                       foreach ($categories as $cat) {
                     ?>
                         <option value="<?php echo $cat->getName()  ?>">
-                          <?php echo $cat->getName() ?>
+                          <?php echo $cat->getName() ?> (<?php echo $cat->getProduct_count() ?>)
                         </option>
 
 
