@@ -1,14 +1,4 @@
-const loginEmail = document.querySelector("#loginEmailInput");
-const loginPassword = document.querySelector("#loginPasswordInput");
-const regAvatar = document.querySelector("#avatarInput");
-const regFname = document.querySelector("#fnameInput");
-const regLname = document.querySelector("#lnameInput");
-const regAddress = document.querySelector("#addressInput");
-const regPhone = document.querySelector("#phoneNumberInput");
-const regEmail = document.querySelector("#emailInput");
-const regPassword = document.querySelector("#passwordInput");
-const regConfirmPassword = document.querySelector("#confirmPasswordInput");
-const toastMessage = document.querySelector("#toastmessage");
+$
 
 
 let currentAuthScreen = "Sign in";
@@ -18,6 +8,14 @@ $(".navbar .nav-link").on("click", function () {
   $(".navbar").find(".active").removeClass("active");
   $(this).addClass("active");
 });
+
+
+//category selection
+function changeSelected(val){
+  console.log(val);
+  const $select = document.querySelector('#categorySelection');
+  $select.value = val
+};
 
 
 
@@ -65,3 +63,8 @@ function showToast(message , isError) {
 
 
 
+$('.dropdown-menu').on( 'click', 'a', function() {
+  var text = $(this).html();
+  var htmlText = text + ' <span class="caret"></span>';
+  $(this).closest('.dropdown').find('.dropdown-toggle').html(htmlText);
+});
