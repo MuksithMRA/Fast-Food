@@ -33,7 +33,9 @@ if ($productService->fetchAllProducts($_GET["product_id"])) {
 </head>
 
 <body>
-
+  <!---Preloader start--->
+  <div id="loader"></div>
+  <!---Preloader end--->
 
   <div class="main">
 

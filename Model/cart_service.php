@@ -33,7 +33,7 @@ class CartService
     public function removeFromCart($prod_id)
     {
         $dbConnection = new DBConnection();
-        $sql = "DELETE FROM cart WHERE prod-id = '$prod_id'";
+        $sql = "DELETE FROM cart WHERE prod_id = '$prod_id'";
         $rows = $dbConnection->executeQuery($sql);
 
         if ($rows > 0) {

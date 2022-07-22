@@ -1,40 +1,5 @@
 
 
-
-// $(function () {
-//     var form = $("#login-form");
-//     $(form).submit(function (e) { 
-//        // e.preventDefault(); 
-
-//         var formData = {
-//             email: $("#emailInput").val(),
-//             password: $("#passwordInput").val(),
-            
-//           };
-//           console.log(formData);
-      
-//           $.ajax({
-//             type: "POST",
-//             url: './login.php',
-//             data: formData,
-//             dataType: "json",
-//             encode: true,
-//             success: function(data)
-//         {
-//           console.log(data); // show response from the php script.
-//         }
-
-//           });
-         
-//     });    
-      
-// });
-   
-      
-      
-    
-  
-
   
   //Adding preloader
 var loader = document.querySelector("#loader");

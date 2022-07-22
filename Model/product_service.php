@@ -56,7 +56,7 @@ class ProductService
     public function getCart(){
         $dbConnection = new DBConnection();
         $this->products = array();
-        $sql = "SELECT sum(price) AS total , count(cart_id) AS cart_count, p.name as prod_name , c.name as cat_name , p.price , i.image , cart.qty from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id INNER JOIN cart ON cart.prod_id = p.product_id  WHERE cart.cust_id = " . $_SESSION["uid"] . "";
+        $sql = "SELECT  p.product_id ,count(cart_id) AS cart_count, p.name as prod_name , c.name as cat_name , p.price , i.image , cart.qty from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id INNER JOIN cart ON cart.prod_id = p.product_id  WHERE cart.cust_id = " . $_SESSION["uid"] . "";
         $this->products  = $dbConnection->executeSelectQuery($sql);
         $this->cartCount = $this->products[0]['cart_count'];
     }
@@ -64,7 +64,9 @@ class ProductService
     {
         $this->getCart();
         if ($this->cartCount > 0) {
+            $this->totalPrice = 500;
             foreach ($this->products as $key => $value) {
+                $tot = $value["price"]*$value["qty"];
                 echo '<li>';
                 echo '<div class="card mb-3" style="max-width: 540px;">';
                 echo '<div class="row g-0">';
@@ -75,14 +77,21 @@ class ProductService
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $value["prod_name"] . '</h5>';
                 echo '<p class="card-text">' . $value["cat_name"] . '</p>';
-                echo '<p>' . $value["qty"] . ' Items </p>';
-                echo '<h6>LKR ' . $value["price"] . '</h6>';
+                echo"<div class='row'>";
+                echo"<div class='col-8'>";
+                echo '<small> LKR ' . $value["price"] . ' * ' . $value["qty"] . ' Product </small>';
+                echo '<h6>LKR ' . $tot . '</h6>';
+                echo '</div>';
+                echo '<div class="col-4 d-flex justify-content-center align-items-center">';
+                echo '<a class="btn btn-danger btn-sm " href="/View/Cart/cart.php?id='.$value["product_id"].'" role="button"><i class="fa-solid fa-trash"></i> </a>';    
+                echo '</div>';
+                echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</li>';
-                $this->totalPrice = $value['total'];
+                $this->totalPrice = $this->totalPrice+ $tot;
             }
             return $this->products;
         }

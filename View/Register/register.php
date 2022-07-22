@@ -38,7 +38,7 @@ if (isset($_POST["register"])) {
 
             if ($isRegistered) {
             
-                header("Location: /index.php");
+                header("Location: /index.php?status=register_success");
             }
         }
     } else {

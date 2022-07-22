@@ -293,21 +293,30 @@ if (isset($_SESSION["authenticated"])) {
     changeSelected('<?php echo $_GET["cato"] ?>')
   </script>
 
-
-  <?php if(isset($GET["status"])){?>
-    <script>console.log("Hello");</script>
-  <?php  if ($_GET["status"] == "auth_fail") { ?>
+<?php if(isset($_GET["status"])){ ?>
+   <?php  if ($_GET["status"] == "auth_fail") { ?>
     <script>
       showToast("Please login to add this product to cart !",true);
     </script>
-  <?php }else if($_GET["status"]=="added"){ ?>
+  <?php  }else if($_GET["status"]=="added"){ ?>
     <script>
       showToast("Added to cart successfully !",false);
     </script>
+  <?php }else if($_GET["status"]=="login_success"){?>
+    <script>
+      showToast("Hey "+'<?php echo $_SESSION["lname"] ?>'+" Welcome Back !",false);
+    </script>
+  <?php }else if($_GET["status"]=="register_success"){?>
+    <script>
+      showToast("Hello "+'<?php echo $_SESSION["lname"] ?>'+" Welcome to fast food !",false);
+    </script>
+  <?php } ?>
   <?php }?>
-  <?php }?>
-  
-
+  <script>    
+    if(typeof window.history.pushState == 'function') {
+        window.history.pushState({}, "Hide", "/index.php");
+    }
+</script>
 </body>
 
 </html>
