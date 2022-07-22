@@ -125,7 +125,7 @@ if (isset($_SESSION["authenticated"])) {
 
             <form action="./View/category.php" method="post">
               <div class="row">
-                <div class="col-12 col-lg-6 d-flex flex-column align-items-center justify-content-center">
+                <div class="col-12 col-lg-5 d-flex flex-column align-items-center justify-content-center mb-2">
                  
                   <select class="form-control m-0" id="categorySelection" name="categories">
                   <option value="null" selected>All Categories</option>
@@ -142,8 +142,8 @@ if (isset($_SESSION["authenticated"])) {
                   </select>
                 </div>
 
-                <div class="col-12 col-lg-6 d-flex flex-column align-items-center justify-content-center">
-                  <input class="btn btn-primary" href="#" role="button" type="submit" value="submit">
+                <div class="col-12 col-lg-6 d-flex flex-column align-items-lg-start justify-content-center mb-2">
+                  <input class="btn btn-primary" type="submit" value="submit">
                 </div>
               </div>
             </form>
@@ -220,9 +220,6 @@ if (isset($_SESSION["authenticated"])) {
       }
 
       ?>
-
-      <div class="test">
-        vfbdb
       </div>
       <!-------Product  Items End-->
 
