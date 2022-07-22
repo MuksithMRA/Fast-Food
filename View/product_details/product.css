@@ -34,18 +34,9 @@
     --bs-btn-font-size: 16px;
 }
 
-.buy {
-    border-radius: 25px;
-    background-color: #0336ff;
-    --bs-btn-font-size: 16px;
-    width: 130px;
-}
 
-.rounded {
-    background-color: #0336ff;
-   /* margin-left: 20px; */
-    font-style: color(white);
-}
+
+
 
 cite {
     margin-left: 15px;

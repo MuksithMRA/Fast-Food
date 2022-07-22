@@ -1,9 +1,30 @@
+<?php
+include($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
+
+$productService = new ProductService();
+if ($productService->fetchAllProducts($_GET["product_id"])) {
+  $product = $productService->getProducts()[0];
+  $product_name = $product['prod_name'];
+  //$description = $product['description'];
+  $price = $product['price'];
+  //$isAvailable = $product['available_status']==1?"Available":"Unavailable";
+  $image = $product['image'];
+  $category = $product['cat_name'];
+
+  if ($productService->fetchAllProducts($category)) {
+    $productsByCategory = $productService->getProducts();
+  }
+}
+
+?>
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/Images/logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/09789629f4.js" crossorigin="anonymous"></script>
@@ -24,16 +45,7 @@
         <div id="productCarousel" class="carousel slide" data-bs-ride="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="/Images/menu-2.jpg" class="d-block w-100" alt="Grilled_Chicken">
-            </div>
-            <div class="carousel-item">
-              <img src="/Images/home-img-1.png" class="d-block w-100" alt="sub_img1">
-            </div>
-            <div class="carousel-item">
-              <img src="/Images/sub2.jpg" class="d-block w-100" alt="sub_img2">
-            </div>
-            <div class="carousel-item">
-              <img src="/Images/sub3.jpg" class="d-block w-100" alt="sub_img3">
+              <img src='<?php echo "data:image/jpeg;base64," . base64_encode($image) . ""; ?>' class="d-block w-100" alt="product_image">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
@@ -50,10 +62,10 @@
       <!--Description-->
       <div class="col-12 col-lg-6 col-md-auto col-sm-auto description mt-3 mt-3">
         <div class="title h3 mb-4">
-          Grilled Chicken legs in barbecue sause with pepper seeds parsley, salt in a blck stone plate on a black stone table
+          <?php echo $product_name ?>
         </div>
         <p class="price_qty">
-          Rs. 1400.00
+          Rs. <?php echo $price ?>
         </p>
         <br>
         <count-txt class="price_qty me-5">
@@ -65,10 +77,10 @@
 
         <div class="row mt-5">
           <div class="col-12 col-lg-3 col-md-4 col-sm-4">
-            <button type="button" class="cart btn btn-warning my-1 text-white"><i class="fa-solid fa-cart-plus"></i> &nbsp;Add to Cart</button>
+            <button type="button" class="btn btn-warning rounded my-1 text-white"><i class="fa-solid fa-cart-plus"></i> &nbsp;Add to Cart</button>
           </div>
           <div class="col-12 col-lg-3 col-md-4 col-sm-4">
-            <button type="button" class="buy btn btn-primary my-1 text-white"><i class="fa-solid fa-bag-shopping"></i>&nbsp;Buy Now</button>
+            <button type="button" class="btn btn-primary rounded my-1 text-white"><i class="fa-solid fa-bag-shopping"></i>&nbsp;Buy Now</button>
           </div>
         </div>
       </div>
@@ -77,102 +89,23 @@
       You may also like
     </h4>
     <div class="underline bg-warning mb-3" style="height: 4px; width:2rem"></div>
-
-    <ul class="list-group border-0 d-flex flex-row align-items-center" style="width: 100%;overflow:auto;scrollbar-width: thin;">
-      <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
-          <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
-            <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
+    <?php foreach ($productsByCategory as $key => $value) { ?>
+      <ul class="list-group border-0 d-flex flex-row align-items-center" style="width: 100%;overflow:auto;scrollbar-width: thin;">
+        <li class="list-group-item">
+          <div class="card " style="width:18rem;height: auto;" id="product">
+            <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
+              <img src='<?php echo "data:image/jpeg;base64," . base64_encode($value['image']) . ""; ?>' class="card-img-top rounded " alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><?php echo $value['prod_name']; ?></h5>
+                <h6 class="card-subtitle mb-2 text-muted "><?php echo $value['cat_name']; ?></h6>
+                <p class="card-text mb-3">LKR <?php echo $value['price']; ?></p>
+                <a class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+              </div>
             </a>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
-          <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
-            <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
-          <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
-            <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
-          <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
-            <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
-          <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
-            <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
-          <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
-            <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="card " style="width:18rem;height: auto;"  id="product" >
-          <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
-            <img src="/Images/menu-2.jpg" class="card-img-top rounded " alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Title of the card</h5>
-                <h6 class="card-subtitle mb-2 text-muted ">Burger</h6>
-                <p class="card-text">LKR 500</p>
-                <a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
-                </div>
-            </a>
-        </div>
-      </li>
-   
-
-    </ul>
+          </div>
+        </li>
+      </ul>
+    <?php }  ?>
 
   </div>
 </body>

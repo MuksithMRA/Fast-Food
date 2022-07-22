@@ -7,28 +7,42 @@ class ProductService
     private $products = array();
     private $totalPrice = 0;
     private $cartCount = 0;
-    public function getAllProducts(?String $category)
+
+     public function fetchAllProducts(String $keyword)
     {
         $dbConnection = new DBConnection();
         $this->products = array();
-        if($category == "null"){
-            $sql = "SELECT count(p.product_id) AS prod_count, p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
+        if($keyword == "null"){
+            $sql = "SELECT p.product_id , count(p.product_id) AS prod_count, p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
         }else{
-            $sql = "SELECT count(p.product_id) AS prod_count,p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id WHERE c.name = '$category'";
+            $sql = "SELECT p.product_id , count(p.product_id) AS prod_count,p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id WHERE c.name = '$keyword' OR p.product_id = '$keyword'";
         }
         
         $this->products  = $dbConnection->executeSelectQuery($sql);
-        if ($this->products[0]["prod_count"] > 0) {
+        if($this->products[0]["prod_count"] > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    
+    public function showAllProducts(String $keyword)
+    {
+        
+        if ($this->fetchAllProducts($keyword)) {
             foreach ($this->products as $key => $value) {
+                $cartData = array('prod_id'=>$value["product_id"] ,'qty'=>1);
+                $buildcartData = http_build_query($cartData);
                 echo '<div class="col-12 col-lg-3 col-md-6 col-sm-12 p-5 product-card">';
                 echo '<div class="card " style="width:18rem;height: auto;"  id="product" >';
-                echo '<a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">' ;
+                echo '<a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php?product_id='.$value["product_id"].'">' ;
                 echo '<img src="data:image/jpeg;base64,' . base64_encode($value['image']) . '" class="card-img-top rounded " alt="...">';
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $value["prod_name"] . '</h5>';
                 echo '<h6 class="card-subtitle mb-2 text-muted ">' . $value["cat_name"] . '</h6>';
-                echo '<p class="card-text">LKR ' . $value["price"] . '</p>';
-                echo '<a  class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>';
+                echo '<p class="card-text mb-3">LKR ' . $value["price"] . '</p>';
+                echo '<a  class="btn btn-primary stretched-link" href="/View/Cart/add_to_cart.php?'.$buildcartData.'" role="button"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>';
                 echo '</div>';
                 echo '</a>';
                 echo '</div>';
@@ -74,9 +88,6 @@ class ProductService
         }
         return array();
     }
-
-
-
 
 
     /**
