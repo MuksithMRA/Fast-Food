@@ -36,7 +36,11 @@ if ($productService->fetchAllProducts($_GET["product_id"])) {
   <!---Preloader start---
   <div id="loader"></div>
   --Preloader end--->
-
+ 
+  <div class="fluid-container w-100 d-flex align-items-center justify-content-center" style="height: 15vh;background-color:#FF9F1A">
+        <h2 class="text-white text-center"><i class="fa-solid fa-bowl-food"></i> &nbsp; Product</h2>
+    </div>
+    <br>
   <div class="main">
 
     <!--Carousel-->

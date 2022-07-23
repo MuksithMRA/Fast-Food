@@ -259,6 +259,7 @@ if (isset($_SESSION["authenticated"])) {
   <!--- toast-End-->
 
   <!-- Profile Intro Start -->
+  <?php if(isset($_SESSION["authenticated"])){ ?>
   <div class="modal fade" id="ProfileIntro" tabindex="-1" aria-labelledby="ProfileIntroLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -284,6 +285,7 @@ if (isset($_SESSION["authenticated"])) {
       </div>
     </div>
   </div>
+  <?php } ?>
   <!-- Profile Intro End -->
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
