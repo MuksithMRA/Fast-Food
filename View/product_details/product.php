@@ -95,8 +95,9 @@ if ($productService->fetchAllProducts($_GET["product_id"])) {
       You may also like
     </h4>
     <div class="underline bg-warning mb-3" style="height: 4px; width:2rem"></div>
-    <?php foreach ($productsByCategory as $key => $value) { ?>
-      <ul class="list-group border-0 d-flex flex-row align-items-center" style="width: 100%;overflow:auto;scrollbar-width: thin;">
+    
+      <ul class="list-group d-flex flex-row align-items-center" style="width: 100%;overflow:auto;scrollbar-width: thin;">
+      <?php foreach ($productsByCategory as $key => $value) { ?>
         <li class="list-group-item">
           <div class="card " style="width:18rem;height: auto;" id="product">
             <a class="card-block stretched-link text-decoration-none" href="/View/product_details/product.php">
@@ -110,8 +111,9 @@ if ($productService->fetchAllProducts($_GET["product_id"])) {
             </a>
           </div>
         </li>
+        <?php }  ?>
       </ul>
-    <?php }  ?>
+    
 
   </div>
 </body>
