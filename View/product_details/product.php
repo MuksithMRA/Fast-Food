@@ -86,7 +86,7 @@ if ($productService->fetchAllProducts($_GET["product_id"])) {
             <button type="button" class="btn btn-warning rounded my-1 text-white"><i class="fa-solid fa-cart-plus"></i> &nbsp;Add to Cart</button>
           </div>
           <div class="col-12 col-lg-3 col-md-4 col-sm-4">
-            <button type="button" class="btn btn-primary rounded my-1 text-white"><i class="fa-solid fa-bag-shopping"></i>&nbsp;Buy Now</button>
+            <a role="button" href="/View/Checkout/checkout.php" class="btn btn-primary rounded my-1 text-white"><i class="fa-solid fa-bag-shopping"></i>&nbsp;Buy Now</a>
           </div>
         </div>
       </div>
