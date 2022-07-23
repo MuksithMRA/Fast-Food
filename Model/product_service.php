@@ -13,14 +13,15 @@ class ProductService
         $dbConnection = new DBConnection();
         $this->products = array();
         if($keyword == "null"){
-            $sql = "SELECT p.product_id , count(p.product_id) AS prod_count, p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
+            $sql = "SELECT p.product_id , p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id";
         }else{
-            $sql = "SELECT p.product_id , count(p.product_id) AS prod_count,p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id WHERE c.name = '$keyword' OR p.product_id = '$keyword'";
+            $sql = "SELECT p.product_id , p.name as prod_name , c.name as cat_name , p.price , i.image from product p INNER JOIN category c ON p.category_id=c.category_id INNER JOIN product_image i ON i.image_id = p.img_id WHERE c.name = '$keyword' OR p.product_id = '$keyword'";
         }
         
         $this->products  = $dbConnection->executeSelectQuery($sql);
-        if($this->products[0]["prod_count"] > 0){
+        if(count($this->products) > 0){
             return true;
+           
         }else{
             return false;
         }
@@ -31,6 +32,7 @@ class ProductService
     {
         
         if ($this->fetchAllProducts($keyword)) {
+            
             foreach ($this->products as $key => $value) {
                 $cartData = array('prod_id'=>$value["product_id"] ,'qty'=>1);
                 $buildcartData = http_build_query($cartData);

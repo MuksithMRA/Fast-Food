@@ -43,14 +43,20 @@
       
       $result = $this->conn->query($sql);
       
+      
         while($row = $result->fetch_assoc()) {
+    
             $resultSet[] = $row;
         }
       
       
-      if(!empty($resultSet))
+      if(!empty($resultSet)){
           return $resultSet;
+      }else{
+        return array();
       }
+
+    }
   } 
   
 ?>
