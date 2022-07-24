@@ -299,7 +299,7 @@ if (isset($_SESSION["authenticated"])) {
   <?php if (isset($_GET["status"])) { ?>
     <?php if ($_GET["status"] == "auth_fail") { ?>
       <script>
-        showToast("Please login to add this product to cart !", true);
+        showToast("Please login to continue !", true);
       </script>
     <?php  } else if ($_GET["status"] == "added") { ?>
       <script>

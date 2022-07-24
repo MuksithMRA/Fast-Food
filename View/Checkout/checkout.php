@@ -3,22 +3,26 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
 
 session_start();
-$from = $_GET["from"];
-$productService = new ProductService();
-
-
-if ($from == "product") {
-  $qty = $_GET['qty'];
-  $subtotal = (float)$_GET['tot_price'];
-  $products = $productService->fetchAllProducts($_GET['product_id']) ? $productService->getProducts() : [];
-  $total = $subtotal + 500.00;
-} else if ($from == "cart") {
-  $total = (float)$_GET['tot_price'];
-  $subtotal = $total - 500;
-  $productService->getCart();
-  $products = $productService->getProducts();
-} else {
+if(isset($_SESSION["authenticated"])){
+  $from = $_GET["from"];
+  $productService = new ProductService();
+  
+  
+  if ($from == "product") {
+    $qty = $_GET['qty'];
+    $subtotal = (float)$_GET['tot_price'];
+    $products = $productService->fetchAllProducts($_GET['product_id']) ? $productService->getProducts() : [];
+    $total = $subtotal + 500.00;
+  } else if ($from == "cart") {
+    $total = (float)$_GET['tot_price'];
+    $subtotal = $total - 500;
+    $productService->getCart();
+    $products = $productService->getProducts();
+  } 
+}else{
+  header("Location: /index.php?status=auth_fail");
 }
+
 ?>
 
 <html lang="en">
