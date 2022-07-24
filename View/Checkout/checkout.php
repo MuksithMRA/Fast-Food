@@ -1,25 +1,27 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/Model/Order_product.php');
 
 session_start();
-if(isset($_SESSION["authenticated"])){
+if (isset($_SESSION["authenticated"])) {
+  $orderProducts = array();
   $from = $_GET["from"];
   $productService = new ProductService();
-  
-  
+  $total = (float)$_GET['tot_price'];
+
   if ($from == "product") {
+
     $qty = $_GET['qty'];
-    $subtotal = (float)$_GET['tot_price'];
+    $subtotal = $total * $qty;
     $products = $productService->fetchAllProducts($_GET['product_id']) ? $productService->getProducts() : [];
     $total = $subtotal + 500.00;
   } else if ($from == "cart") {
-    $total = (float)$_GET['tot_price'];
+
     $subtotal = $total - 500;
-    $productService->getCart();
-    $products = $productService->getProducts();
-  } 
-}else{
+    $products = $productService->getCart();
+  }
+} else {
   header("Location: /index.php?status=auth_fail");
 }
 
@@ -47,8 +49,8 @@ if(isset($_SESSION["authenticated"])){
   </div>
   <br />
   <div class="container">
-    <form class="row">
-      <div class="col-lg-6 px-lg-5">
+    <form action="./add_order.php?from=<?php echo $from ?>" method="POST" class="row">
+      <div class="col-lg-5 px-lg-5">
         <div class="h4 my-3">1. Billing Information</div>
 
         <label for="nameInput" class="form-label mt-3">Full name</label>
@@ -62,26 +64,30 @@ if(isset($_SESSION["authenticated"])){
         <div class="valid-feedback">Looks good!</div>
 
         <label for="addressInput" class="form-label mt-3">Address</label>
-        <input type="text" class="form-control" id="addressInput" value="<?php echo $_SESSION['address'] ?>" required />
+        <input type="text" name="address" class="form-control" id="addressInput" value="<?php echo $_SESSION['address'] ?>" required />
         <div class="valid-feedback">Looks good!</div>
 
         <label for="phoneInput" class="form-label mt-3">Phone number</label>
-        <input type="tel" class="form-control" id="phoneInput" value="<?php echo $_SESSION['phone'] ?>" required />
+        <input type="tel" name="phone" class="form-control" id="phoneInput" value="<?php echo $_SESSION['phone'] ?>" required />
         <div class="valid-feedback">Looks good!</div>
 
         <label for="paymentMethod" class="form-label mt-3">Payment Method</label>
-        <select class="form-select" id="paymentMethod" required>
+        <select class="form-select" id="paymentMethod" name="payment_method" required>
           <option selected value="card">Card Payment</option>
           <option value="cash">Cash on Delivery</option>
         </select>
         <div class="invalid-feedback">Please select a valid method.</div>
 
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-7">
         <div class="h4 my-3">2. Order Information</div>
         <ul class="list-group mt-5" style="height: 35vh;overflow: auto;">
           <?php
           foreach ($products as $key => $value) {
+
+            array_push($orderProducts,
+            array("prod_id"=>$value['product_id'] , "qty"=>isset($qty) ? $qty : $value['qty'])
+            );
           ?>
             <li class="list-group-item d-flex justify-content-center align-items-center border-none">
               <div class="card mb-2" style="width: 500px;">
@@ -92,14 +98,16 @@ if(isset($_SESSION["authenticated"])){
                   <div class="col-sm-7">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $value['prod_name'] ?></h5>
-                      <h6>Burgers</h6>
-                      <strong class="card-text">LKR <?php echo $value['price']*(isset($qty)?$qty: $value['qty']) ?> &nbsp;(<small>LKR <?php echo $value['price']; echo " * "; echo isset($qty)?$qty: $value['qty'];  ?>  </small>)</strong>
+                      <h6><?php echo $value['cat_name'] ?></h6>
+                      <strong class="card-text">LKR <?php echo $value['price'] * (isset($qty) ? $qty : $value['qty']) ?> &nbsp;(<small>LKR <?php echo $value['price'];
+                                                                                                                                      echo " * ";
+                                                                                                           echo isset($qty) ? $qty : $value['qty'];  ?> </small>)</strong>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-          <?php } ?>
+          <?php }  $_SESSION['order_products'] =$orderProducts  ?>
         </ul>
         <hr>
         <div class="fluid-container d-flex justify-content-center align-items-center">
@@ -119,7 +127,7 @@ if(isset($_SESSION["authenticated"])){
           </div>
         </div>
         <div class="row mt-5">
-          <div class="col-8">
+          <div class="col-7">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
               <label class="form-check-label" for="invalidCheck">
@@ -130,7 +138,8 @@ if(isset($_SESSION["authenticated"])){
               </div>
             </div>
           </div>
-          <div class="col-4">
+         
+          <div class="col-5">
             <button class="btn btn-primary" type="submit">Place Order </a>
           </div>
         </div>

@@ -296,6 +296,8 @@ if (isset($_SESSION["authenticated"])) {
     changeSelected('<?php echo isset($_GET["cato"]) ? $_GET["cato"] : "null" ?>')
   </script>
 
+ <!---Toast Trigger---->
+
   <?php if (isset($_GET["status"])) { ?>
     <?php if ($_GET["status"] == "auth_fail") { ?>
       <script>
@@ -313,7 +315,11 @@ if (isset($_SESSION["authenticated"])) {
       <script>
         showToast("Hello " + '<?php echo $_SESSION["lname"] ?>' + " Welcome to fast food !", false);
       </script>
-    <?php } ?>
+    <?php } else if($_GET["status"]== "order_placed"){?>
+        <script>
+          showToast("Order Placed Successfully !" , false);
+        </script>
+    <?php }?>
   <?php } ?>
   <script>
     if (typeof window.history.pushState == 'function') {
