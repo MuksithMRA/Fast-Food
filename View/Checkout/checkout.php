@@ -44,7 +44,7 @@ if (isset($_SESSION["authenticated"])) {
 <body>
   <div class="fluid-container w-100 d-flex align-items-center justify-content-center" style="height: 15vh; background-color: #ff9f1a">
     <h2 class="text-white text-center">
-      <i class="fa fa-money" aria-hidden="true"></i> &nbsp; Checkoout
+      <i class="fa fa-money" aria-hidden="true"></i> &nbsp; Checkout
     </h2>
   </div>
   <br />
