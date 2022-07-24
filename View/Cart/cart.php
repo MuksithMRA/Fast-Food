@@ -57,10 +57,12 @@ if (isset($_GET["id"])) {
 
                     <div class="col-8 d-flex justify-content-center align-items-start flex-column">
                         <p>Delivery : LKR 500 </p>
-                        <h5>Total : LKR <?php echo $productService->getTotalPrice() ?></h5>
+                        <h5>Total : LKR <?php 
+                           $tot_price =  $productService->getTotalPrice();
+                        echo $tot_price ?></h5>
                     </div>
                     <div class="col-4 d-flex justify-content-center align-items-center">
-                        <a class="btn btn-outline-light" href="<?php if($cart_Products!= array()){ echo "/View/Checkout/checkout.php";} ?>" role="button">Checkout</a>
+                        <a class="btn btn-outline-light" href="<?php if($cart_Products!= array()){ echo "/View/Checkout/checkout.php?tot_price=$tot_price&from=cart";} ?>" role="button">Checkout</a>
                     </div>
                 </div>
             </div>

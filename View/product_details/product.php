@@ -94,7 +94,7 @@ if ($productService->fetchAllProducts($product_id)) {
             <a role="button" href="<?php echo "/View/Cart/add_to_cart.php?".http_build_query(array('prod_id'=>$product_id ,'qty'=>2 )).""  ?>" class="btn btn-warning rounded my-1 text-white"><i class="fa-solid fa-cart-plus"></i> &nbsp;Add to Cart</a>
           </div>
           <div class="col-12 col-lg-3 col-md-4 col-sm-4">
-            <a role="button" href="/View/Checkout/checkout.php" class="btn btn-primary rounded my-1 text-white"><i class="fa-solid fa-bag-shopping"></i>&nbsp;Buy Now</a>
+            <a role="button" href="/View/Checkout/checkout.php?product_id=<?php echo $product_id ?>&from=product&tot_price=<?php echo $price ?>&qty=2" class="btn btn-primary rounded my-1 text-white"><i class="fa-solid fa-bag-shopping"></i>&nbsp;Buy Now</a>
           </div>
         </div>
       </div>

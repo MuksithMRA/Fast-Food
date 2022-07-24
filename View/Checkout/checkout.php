@@ -1,5 +1,24 @@
 <?php
-  session_start();
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Model/product_service.php');
+
+session_start();
+$from = $_GET["from"];
+$productService = new ProductService();
+
+
+if ($from == "product") {
+  $qty = $_GET['qty'];
+  $subtotal = (float)$_GET['tot_price'];
+  $products = $productService->fetchAllProducts($_GET['product_id']) ? $productService->getProducts() : [];
+  $total = $subtotal + 500.00;
+} else if ($from == "cart") {
+  $total = (float)$_GET['tot_price'];
+  $subtotal = $total - 500;
+  $productService->getCart();
+  $products = $productService->getProducts();
+} else {
+}
 ?>
 
 <html lang="en">
@@ -29,7 +48,9 @@
         <div class="h4 my-3">1. Billing Information</div>
 
         <label for="nameInput" class="form-label mt-3">Full name</label>
-        <input type="text" class="form-control" value="<?php echo $_SESSION['fname']; echo '&nbsp;'; echo $_SESSION['lname'] ?>" id="nameInput" required />
+        <input type="text" class="form-control" value="<?php echo $_SESSION['fname'];
+                                                        echo '&nbsp;';
+                                                        echo $_SESSION['lname'] ?>" id="nameInput" required />
         <div class="valid-feedback">Looks good!</div>
 
         <label for="emailInput" class="form-label mt-3">Email</label>
@@ -55,42 +76,42 @@
       <div class="col-lg-6">
         <div class="h4 my-3">2. Order Information</div>
         <ul class="list-group mt-5" style="height: 35vh;overflow: auto;">
-
-          <li class="list-group-item d-flex justify-content-center align-items-center border-none">
-            <div class="card mb-2" style="width: 500px;">
-              <div class="row no-gutters">
-                <div class="col-sm-5">
-                  <img class="card-img" src="/Images/menu-2.jpg" alt="Suresh Dasari Card">
-                </div>
-                <div class="col-sm-7">
-                  <div class="card-body">
-                    <h5 class="card-title">Ham Burger</h5>
-                    <h6>Burgers</h6>
-                    <strong class="card-text">LKR 1500 &nbsp;(<small>LKR 500 * 3 </small>)</strong>
+          <?php
+          foreach ($products as $key => $value) {
+          ?>
+            <li class="list-group-item d-flex justify-content-center align-items-center border-none">
+              <div class="card mb-2" style="width: 500px;">
+                <div class="row no-gutters">
+                  <div class="col-sm-5">
+                    <img class="card-img" src='<?php echo "data:image/jpeg;base64," . base64_encode($value['image']) . ""; ?>' alt="Suresh Dasari Card">
+                  </div>
+                  <div class="col-sm-7">
+                    <div class="card-body">
+                      <h5 class="card-title"><?php echo $value['prod_name'] ?></h5>
+                      <h6>Burgers</h6>
+                      <strong class="card-text">LKR <?php echo $value['price']*(isset($qty)?$qty: $value['qty']) ?> &nbsp;(<small>LKR <?php echo $value['price']; echo " * "; echo isset($qty)?$qty: $value['qty'];  ?>  </small>)</strong>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-
+            </li>
+          <?php } ?>
         </ul>
         <hr>
         <div class="fluid-container d-flex justify-content-center align-items-center">
-          <div class="row">
+          <div class="row w-100">
             <div class="col-6"><strong>Subtotal</strong></div>
-            <div class="col-6">LKR 500.0</div>
+            <div class="col-6">LKR <?php echo $subtotal ?></div>
             <div class="col-6"><strong>Delivery Fee</strong></div>
-            <div class="col-6">LKR 100.0</div>
+            <div class="col-6">LKR 500</div>
           </div>
         </div>
 
         <hr>
         <div class="fluid-container d-flex justify-content-center align-items-center">
-          <div class="row">
+          <div class="row w-100">
             <div class="col-6"><strong>Total</strong></div>
-            <div class="col-6">LKR 600.0</div>
-            <div class="col-6"><strong>Payment Method</strong></div>
-            <div class="col-6">Card Payment</div>
+            <div class="col-6">LKR <?php echo $total ?></div>
           </div>
         </div>
         <div class="row mt-5">
