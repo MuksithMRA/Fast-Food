@@ -1,5 +1,5 @@
 
-
+let qty = 1;
   
   //Adding preloader
   var loader = document.querySelector("#loader");
@@ -24,3 +24,23 @@
     loader = document.getElementById("loader");
     loadNow(1);
   });
+
+
+  $(document).ready(function () {
+    $("#inc_qty").click(function (e) { 
+      qty = parseInt($("#qty").text());
+      if(qty>=1){
+        qty += 1;
+        $("#qty").text(qty.toString());
+      }   
+    });
+  
+    $("#dec_qty").click(function (e) { 
+      qty = parseInt($("#qty").text());
+      if(qty>1){
+        qty -= 1;
+        $("#qty").text(qty.toString());
+      }   
+    });
+  });
+  

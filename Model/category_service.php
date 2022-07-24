@@ -13,16 +13,19 @@ class CategoryService{
     {
         $this->categories = [];
         $dbConnection = new DBConnection();
-        $sql = "SELECT count(category_id) AS cat_count , category_id , name , product_count FROM category";
+        $sql = "SELECT * FROM category";
         $result = $dbConnection->executeSelectQuery($sql);
          $category = new Category();
-        if($result[0]["cat_count"]>0){
+        if(count($result)>0){
+        
             foreach ($result as $key => $value){
                 $category->setCategory_id($value['category_id']);
                 $category->setName($value['name']);
                 $category->setProduct_count($value['product_count']);
                 array_push($this->categories,$category);
+                $category = new Category();
             }
+        
             
         } 
         return $this->categories;
