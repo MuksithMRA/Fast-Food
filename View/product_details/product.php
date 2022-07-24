@@ -45,7 +45,7 @@ if ($productService->fetchAllProducts($product_id)) {
         <h2 class="text-white text-center"><i class="fa-solid fa-bowl-food"></i> &nbsp; Product</h2>
     </div>
     <br>
-  <div class="main">
+  <div class="container my-4">
 
     <!--Carousel-->
 
