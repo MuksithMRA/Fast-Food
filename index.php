@@ -207,19 +207,22 @@ if (isset($_SESSION["authenticated"])) {
 
 
     <!--Product Item List Start-->
-    <div class="row w-100 d-sm-flex justify-content-center" id="product_list">
+    <div class="container">
+      <div class="row w-100 d-sm-flex justify-content-center" id="product_list">
 
-      <!-------Product  Items Start #from database-->
+        <!-------Product  Items Start #from database-->
 
-      <?php
-      if (isset($_GET["cato"])) {
-        $productService->showAllProducts($_GET["cato"]);
-      } else {
-        $productService->showAllProducts("null");
-      }
+        <?php
+        if (isset($_GET["cato"])) {
+          $productService->showAllProducts($_GET["cato"]);
+        } else {
+          $productService->showAllProducts("null");
+        }
 
-      ?>
+        ?>
+      </div>
     </div>
+
     <!-------Product  Items End-->
 
   </div>
@@ -296,7 +299,7 @@ if (isset($_SESSION["authenticated"])) {
     changeSelected('<?php echo isset($_GET["cato"]) ? $_GET["cato"] : "null" ?>')
   </script>
 
- <!---Toast Trigger---->
+  <!---Toast Trigger---->
 
   <?php if (isset($_GET["status"])) { ?>
     <?php if ($_GET["status"] == "auth_fail") { ?>
@@ -315,11 +318,11 @@ if (isset($_SESSION["authenticated"])) {
       <script>
         showToast("Hello " + '<?php echo $_SESSION["lname"] ?>' + " Welcome to fast food !", false);
       </script>
-    <?php } else if($_GET["status"]== "order_placed"){?>
-        <script>
-          showToast("Order Placed Successfully !" , false);
-        </script>
-    <?php }?>
+    <?php } else if ($_GET["status"] == "order_placed") { ?>
+      <script>
+        showToast("Order Placed Successfully !", false);
+      </script>
+    <?php } ?>
   <?php } ?>
   <script>
     if (typeof window.history.pushState == 'function') {
